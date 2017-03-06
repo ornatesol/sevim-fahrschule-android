@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_theory"
+        android:icon="@drawable/ic_menu_camera"
+        android:title="Theory" />
+    <item
+        android:id="@+id/nav_messages"
+        android:icon="@drawable/ic_menu_gallery"
+        android:title="Nachrichten" />
+    <item
+        android:id="@+id/nav_offers"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="Angebot" />
+  </group>
+
+  <item android:title="About Us">
+    <menu>
+      <item
+          android:id="@+id/nav_team"
+          android:icon="@drawable/ic_menu_share"
+          android:title="Team" />
+      <item
+          android:id="@+id/nav_opening_timings"
+          android:icon="@drawable/ic_menu_send"
+          android:title="Offnung Zeit" />
+    </menu>
+  </item>
+
+  <item
+      android:id="@+id/nav_app_launch"
+      android:icon="@drawable/ic_menu_manage"
+      android:title="Launch App" />
+
+</menu>
