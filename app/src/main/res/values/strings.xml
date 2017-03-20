@@ -4,5 +4,25 @@
   <string name="navigation_drawer_open">Open navigation drawer</string>
   <string name="navigation_drawer_close">Close navigation drawer</string>
 
-  <string name="action_settings">Settings</string>
+  <!-- Nav Bar Menu Items -->
+  <string name="learning_site">Lernseite</string>
+  <string name="messages">Nachrichten</string>
+  <string name="infos">Infos</string>
+  <string name="locations">Standorte</string>
+  <string name="office_timing">Bürozeiten</string>
+  <string name="theory_calendar">Theoriezeiten</string>
+  <string name="contact">Kontakt</string>
+
+  <!-- Error Messages -->
+  <string name="browser_app_not_found">Es konnte keine Browser-App gefunden werden.</string>
+  <string name="error_no_connection">Keine Internetverbindung</string>
+  <string name="connection_error_dialog_title">Verbindungsfehler</string>
+
+  <!-- App Specific Text -->
+  <string name="ok">Ok</string>
+  <string name="generic_welcome_message">Aktuell Data wird kommen hier.</string>
+  <string name="office_timing_value">"Bürozeiten:\n"
+                + "Montag - Freitag von 9:00 - 19:00 Uhr\n"
+                + "Samstag von 10:00 - 15:00 Uhr";</string>
+
 </resources>

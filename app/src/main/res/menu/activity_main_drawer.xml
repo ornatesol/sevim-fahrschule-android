@@ -3,35 +3,33 @@
 
   <group android:checkableBehavior="single">
     <item
-        android:id="@+id/nav_theory"
+        android:id="@+id/nav_learning_site"
         android:icon="@drawable/ic_menu_camera"
-        android:title="Theory" />
+        android:title="@string/learning_site" />
     <item
         android:id="@+id/nav_messages"
         android:icon="@drawable/ic_menu_gallery"
-        android:title="Nachrichten" />
+        android:title="@string/messages" />
     <item
-        android:id="@+id/nav_offers"
+        android:id="@+id/nav_infos"
         android:icon="@drawable/ic_menu_slideshow"
-        android:title="Angebot" />
+        android:title="@string/infos" />
+    <item
+        android:id="@+id/nav_theory_calendar"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="@string/theory_calendar" />
+
+    <item android:title="@string/contact">
+      <menu>
+        <item
+            android:id="@+id/nav_locations"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/locations" />
+        <item
+            android:id="@+id/nav_office_timings"
+            android:icon="@drawable/ic_menu_send"
+            android:title="@string/office_timing" />
+      </menu>
+    </item>
   </group>
-
-  <item android:title="About Us">
-    <menu>
-      <item
-          android:id="@+id/nav_team"
-          android:icon="@drawable/ic_menu_share"
-          android:title="Team" />
-      <item
-          android:id="@+id/nav_opening_timings"
-          android:icon="@drawable/ic_menu_send"
-          android:title="Offnung Zeit" />
-    </menu>
-  </item>
-
-  <item
-      android:id="@+id/nav_app_launch"
-      android:icon="@drawable/ic_menu_manage"
-      android:title="Launch App" />
-
 </menu>
