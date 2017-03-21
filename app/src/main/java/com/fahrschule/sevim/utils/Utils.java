@@ -29,17 +29,12 @@ public class Utils {
         }
     }
 
-    public static void openUrlInBrowser(Activity activity, String url) {
-        if(!Utils.isOnline(activity)) {
-            Utils.showConnectionErrorDialog(activity, activity.getString(
-                    R.string.error_no_connection));
+public static void openUrlInBrowser(Activity activity, String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        if (Utils.isIntentSafe(activity, intent)) {
+            activity.startActivity(intent);
         } else {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            if (Utils.isIntentSafe(activity, intent)) {
-                activity.startActivity(intent);
-            } else {
-                Toast.makeText(activity, R.string.browser_app_not_found, Toast.LENGTH_LONG).show();
-            }
+            Toast.makeText(activity, R.string.browser_app_not_found, Toast.LENGTH_LONG).show();
         }
     }
 

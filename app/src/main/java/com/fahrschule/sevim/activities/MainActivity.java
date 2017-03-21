@@ -52,10 +52,14 @@ public class MainActivity extends BaseActivity {
             }
         } else {
             //default case
-            String sampleText = getString(R.string.generic_welcome_message,
-                    "Aktuell");
-            commitToMainFragment(sampleText);
+            showDefaultContent();
         }
+    }
+
+    private void showDefaultContent() {
+        String sampleText = getString(R.string.generic_welcome_message,
+                "Aktuell");
+        commitToMainFragment(sampleText);
     }
 
     private void showTheoryCalendarContent() {
@@ -78,7 +82,12 @@ public class MainActivity extends BaseActivity {
     }
 
     private void loadLearningSiteContent() {
-        Utils.openUrlInBrowser(this, getString(R.string.learning_site_url));
+        if(!Utils.isOnline(this)) {
+            showDefaultContent();
+            Utils.showConnectionErrorDialog(this, getString(R.string.error_no_connection));
+        } else {
+            Utils.openUrlInBrowser(this, getString(R.string.learning_site_url));
+        }
     }
 
     private void showOfficeLocationsContent() {
