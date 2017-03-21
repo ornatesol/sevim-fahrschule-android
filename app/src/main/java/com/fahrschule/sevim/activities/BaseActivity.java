@@ -9,11 +9,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.fahrschule.sevim.R;
+import com.fahrschule.sevim.utils.Utils;
 
 public abstract class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,10 +36,14 @@ public abstract class BaseActivity extends AppCompatActivity
         setupToolbar();
         setupDrawer();
         setupNavigationView();
-
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             showDefaultFragment();
         }
+
+        //TODO confirm from Tauseef
+        //if(!Utils.isOnline(this)) {
+        //    Utils.showConnectionErrorDialog(this, getString(R.string.error_no_connection));
+        //}
     }
 
     private void setupNavigationView() {
@@ -63,23 +67,34 @@ public abstract class BaseActivity extends AppCompatActivity
     protected abstract void showDefaultFragment();
 
 
-    @SuppressWarnings("StatementWithEmptyBody") @Override
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_theory) {
+        switch (id) {
+            case R.id.nav_learning_site:
+                startActivity(MainActivity.newIntent(this, getString(R.string.learning_site)));
+                break;
+            case R.id.nav_messages:
+                startActivity(MainActivity.newIntent(this, getString(R.string.messages)));
+                break;
+            case R.id.nav_infos:
+                startActivity(MainActivity.newIntent(this, getString(R.string.infos)));
+                break;
+            case R.id.nav_locations:
+                startActivity(MainActivity.newIntent(this, getString(R.string.locations)));
+                break;
+            case R.id.nav_theory_calendar:
+                startActivity(MainActivity.newIntent(this, getString(R.string.theory_calendar)));
+                break;
+            case R.id.nav_office_timings:
+                startActivity(MainActivity.newIntent(this, getString(R.string.office_timing)));
+                break;
 
-        } else if (id == R.id.nav_messages) {
-
-        } else if (id == R.id.nav_offers) {
-
-        } else if (id == R.id.nav_team) {
-
-        } else if (id == R.id.nav_opening_timings) {
-
-        } else if (id == R.id.nav_app_launch) {
-
+            default:
+                //
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -94,25 +109,5 @@ public abstract class BaseActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }
