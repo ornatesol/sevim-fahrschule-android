@@ -20,9 +20,31 @@
 
   <!-- App Specific Text -->
   <string name="ok">Ok</string>
-  <string name="generic_welcome_message">Aktuell Data wird kommen hier.</string>
-  <string name="office_timing_value">"Bürozeiten:\n"
-                + "Montag - Freitag von 9:00 - 19:00 Uhr\n"
-                + "Samstag von 10:00 - 15:00 Uhr";</string>
+  <string name="generic_welcome_message">%s Data wird kommen hier.</string>
+  <string name="office_timing_value">Bürozeiten:-\n\n Montag - Freitag : von 9:00 - 19:00 Uhr
+    \n\nSamstag: von 10:00 - 15:00 Uhr</string>
+
+  <!-- Info List Items -->
+  <string name="schaltung">Automatik &amp; Schaltung</string>
+  <string name="fahrlehrer">Fahrlehrer/innen</string>
+  <string name="ausl_fuehrerschein">Umschreibung ausl. Führerscheine</string>
+  <string name="fuehrerschein_17">Führerschein mit 17 J. (BF 17)</string>
+  <string name="intensive_ausbildung">Intensive Ausbildung</string>
+  <string name="theorieunterricht">10x Theorieunterricht in der Woche</string>
+  <string name="moderne_fahrzeuge">Moderne Fahrzeuge</string>
+  <string name="lkw">PKW / LKW / Motorrad</string>
+  <string name="asf">ASF Seminar</string>
+  <string name="auffrischung">Auffrischungsfahrstunden</string>
+  <string name="angsthasen">Angsthasenprogramm</string>
+  <string name="spritspar">Spritsparkurs</string>
+  <string name="erste_hilfe">Erste-Hilfe-Kurs im Haus</string>
+  <string name="seetest">Sehtest</string>
+  <string name="theorievorbereitung">Theorievorbereitung</string>
+  <string name="klima_raeume">Klimatisierte Räume</string>
+  <string name="deutsch_tuerkisch">Deutsch, Türkisch, Englisch</string>
+  <string name="lange_buerozeiten">Lange Bürozeiten</string>
+  <string name="beratung">Individuelle Beratung / Planung</string>
+  <string name="express_fuehrerschein">Express Führerschein</string>
+  <string name="antraege">Bürgeramt Anträge über die Fahrschule </string>
 
 </resources>
