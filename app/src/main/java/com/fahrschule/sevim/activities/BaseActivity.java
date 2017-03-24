@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.fahrschule.sevim.R;
-import com.fahrschule.sevim.utils.Utils;
 
 public abstract class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,6 +25,8 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @BindView(R.id.nav_view)
     protected NavigationView navigationView;
+
+    private NavItemActionTargetListener listener;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +45,17 @@ public abstract class BaseActivity extends AppCompatActivity
         //if(!Utils.isOnline(this)) {
         //    Utils.showConnectionErrorDialog(this, getString(R.string.error_no_connection));
         //}
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        try {
+            listener = (NavItemActionTargetListener) this;
+        } catch (ClassCastException e) {
+            throw new IllegalStateException(
+                    "Activity should implement NavItemActionTargetListener!", e);
+        }
     }
 
     private void setupNavigationView() {
@@ -75,26 +87,26 @@ public abstract class BaseActivity extends AppCompatActivity
 
         switch (id) {
             case R.id.nav_learning_site:
-                startActivity(MainActivity.newIntent(this, getString(R.string.learning_site)));
+                listener.handleSelection(getString(R.string.learning_site));
                 break;
             case R.id.nav_messages:
-                startActivity(MainActivity.newIntent(this, getString(R.string.messages)));
+                listener.handleSelection(getString(R.string.messages));
                 break;
             case R.id.nav_infos:
-                startActivity(MainActivity.newIntent(this, getString(R.string.infos)));
+                listener.handleSelection(getString(R.string.infos));
                 break;
             case R.id.nav_locations:
-                startActivity(MainActivity.newIntent(this, getString(R.string.locations)));
+                listener.handleSelection(getString(R.string.locations));
                 break;
             case R.id.nav_theory_calendar:
-                startActivity(MainActivity.newIntent(this, getString(R.string.theory_calendar)));
+                listener.handleSelection(getString(R.string.theory_calendar));
                 break;
             case R.id.nav_office_timings:
-                startActivity(MainActivity.newIntent(this, getString(R.string.office_timing)));
+                listener.handleSelection(getString(R.string.office_timing));
                 break;
 
             default:
-                //
+                listener.handleSelection("");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -109,5 +121,16 @@ public abstract class BaseActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    /**
+     * To establish communication with the Activity handling receiving Nav Item Actions
+     */
+    interface NavItemActionTargetListener {
+        /**
+         * Handles which particular Activity/Fragment to initiate based on selected Menu
+         * @param selectedMenu Navigation Drawer Item clicked
+         */
+        void handleSelection(String selectedMenu);
     }
 }
