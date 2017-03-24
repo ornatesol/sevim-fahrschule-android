@@ -7,53 +7,18 @@ import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.fragments.InfoFragment;
 import com.fahrschule.sevim.fragments.MainFragment;
 import com.fahrschule.sevim.fragments.OfficeLocationsFragment;
+import com.fahrschule.sevim.models.NavigationMenuItem;
 import com.fahrschule.sevim.utils.Utils;
 
-public class MainActivity extends BaseActivity {
-
-    private static final String EXTRA_DESTINATION_TYPE = "args_destination_type";
+public class MainActivity extends BaseActivity implements BaseActivity.NavItemActionTargetListener {
 
     public static Intent newIntent(final Context context) {
         return new Intent(context, MainActivity.class);
     }
 
-    public static Intent newIntent(final Context context, String destinationType) {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(EXTRA_DESTINATION_TYPE, destinationType);
-        return intent;
-    }
-
     @Override
     protected void showDefaultFragment() {
-        decideDestination(getIntent());
-    }
-
-    private void decideDestination(Intent intent) {
-        if (intent.hasExtra(EXTRA_DESTINATION_TYPE)) {
-            //TODO convert it into Enums
-            if (intent.getStringExtra(EXTRA_DESTINATION_TYPE).equals(
-                    getString(R.string.office_timing))) {
-                showOfficeTimingContent();
-            } else if (intent.getStringExtra(EXTRA_DESTINATION_TYPE).equals(
-                    getString(R.string.infos))) {
-                showInfosContent();
-            } else if (intent.getStringExtra(EXTRA_DESTINATION_TYPE).equals(
-                    getString(R.string.locations))) {
-                showOfficeLocationsContent();
-            } else if (intent.getStringExtra(EXTRA_DESTINATION_TYPE).equals(
-                    getString(R.string.messages))) {
-                showMessagesContent();
-            } else if (intent.getStringExtra(EXTRA_DESTINATION_TYPE).equals(
-                    getString(R.string.theory_calendar))) {
-                showTheoryCalendarContent();
-            } else if (intent.getStringExtra(EXTRA_DESTINATION_TYPE).equals(
-                    getString(R.string.learning_site))) {
-                loadLearningSiteContent();
-            }
-        } else {
-            //default case
-            showDefaultContent();
-        }
+        showDefaultContent();
     }
 
     private void showDefaultContent() {
@@ -107,5 +72,36 @@ public class MainActivity extends BaseActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content, fragment)
                 .commit();
+    }
+
+    @Override
+    public void handleSelection(String selectedMenu) {
+
+        NavigationMenuItem menuItem = NavigationMenuItem.getNavMenuItem(this, selectedMenu);
+        if (menuItem != null) {
+            switch (menuItem) {
+                case LEARNINGSITE:
+                    loadLearningSiteContent();
+                    break;
+                case MESSAGES:
+                    showMessagesContent();
+                    break;
+                case INFOS:
+                    showInfosContent();
+                    break;
+                case THEORYCALENDAR:
+                    showTheoryCalendarContent();
+                    break;
+                case LOCATIONS:
+                    showOfficeLocationsContent();
+                    break;
+                case OFFICETIMING:
+                    showOfficeTimingContent();
+                    break;
+                default:
+                    showDefaultContent();
+                    break;
+            }
+        }
     }
 }
