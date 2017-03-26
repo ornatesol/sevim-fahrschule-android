@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="100"
-    android:layout_marginTop="8dp"
-    android:padding="16dp">
-
+    android:padding="@dimen/margin_8">
 
   <ImageView
       android:id="@+id/list_item_infos_icon"
-      android:layout_height="match_parent"
-      android:layout_width="0dp"
-      android:layout_weight="20"
+      android:layout_height="@dimen/infos_list_item_size"
+      android:layout_width="@dimen/infos_list_item_size"
       android:scaleType="centerInside"
       tools:src="@drawable/ic_menu_camera"
       android:src="@drawable/ic_menu_camera"/>
 
   <TextView
       android:id="@+id/list_item_infos_text"
-      android:layout_marginStart="16dp"
-      android:layout_height="match_parent"
-      android:layout_width="0dp"
+      android:layout_height="@dimen/infos_list_item_size"
+      android:layout_width="match_parent"
+      android:layout_toEndOf="@id/list_item_infos_icon"
       tools:text="Automatic"
-      android:textSize="16sp"
+      android:textSize="@dimen/text_size_16"
       android:gravity="center_vertical|start"
-      android:layout_weight="80"/>
+      android:layout_marginStart="@dimen/margin_16"/>
 
-</LinearLayout>
+</RelativeLayout>
