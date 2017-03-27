@@ -4,28 +4,204 @@
     android:layout_height="match_parent"
     tools:context="com.fahrschule.sevim.fragments.OfficeLocationsFragment">
 
-  <RelativeLayout
+  <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="wrap_content">
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="@dimen/margin_4"
+      android:layout_marginStart="@dimen/margin_16"
+      android:layout_marginEnd="@dimen/margin_16">
 
-    <ImageView
-        android:id="@+id/office_location_wedding"
+    <RelativeLayout
+        android:id="@+id/location_wedding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/office_location_screenshot_wedding"
-        android:scaleType="fitXY">
-    </ImageView>
+        android:gravity="start|center_vertical"
+        android:layout_marginTop="@dimen/margin_16">
 
-    <ImageView
-        android:id="@+id/office_location_reinickendorf"
+      <TextView
+          android:id="@+id/location_wedding_title"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="@dimen/text_size_32"
+          android:layout_marginStart="@dimen/margin_32"
+          android:textStyle="bold"
+          android:textColor="@color/red_700"
+          tools:text="@string/wedding_title"
+          android:text="@string/wedding_title"/>
+
+      <TextView
+          android:id="@+id/location_wedding_address"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/location_wedding_title"
+          android:layout_marginTop="@dimen/margin_12"
+          android:textSize="@dimen/text_size_20"
+          android:textColor="@android:color/black"
+          android:drawableStart="@drawable/ic_location"
+          android:drawablePadding="@dimen/margin_8"
+          tools:text="@string/wedding_address"
+          android:text="@string/wedding_address"/>
+
+      <TextView
+          android:id="@+id/location_wedding_phone_1"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/location_wedding_address"
+          android:layout_marginTop="@dimen/margin_32"
+          android:textSize="@dimen/text_size_20"
+          android:textColor="@android:color/black"
+          android:textStyle="bold"
+          android:drawableStart="@drawable/ic_telephone"
+          android:drawablePadding="@dimen/margin_8"
+          tools:text="@string/wedding_phone_1"
+          android:text="@string/wedding_phone_1"/>
+
+      <TextView
+          android:id="@+id/location_wedding_phone_2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/location_wedding_phone_1"
+          android:layout_marginTop="@dimen/margin_16"
+          android:textSize="@dimen/text_size_20"
+          android:textColor="@android:color/black"
+          android:textStyle="bold"
+          android:drawableStart="@drawable/ic_telephone"
+          android:drawablePadding="@dimen/margin_8"
+          tools:text="@string/wedding_phone_2"
+          android:text="@string/wedding_phone_2"/>
+
+      <TextView
+          android:id="@+id/location_wedding_fax"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/location_wedding_phone_2"
+          android:layout_marginTop="@dimen/margin_16"
+          android:textSize="@dimen/text_size_20"
+          android:textColor="@android:color/black"
+          android:drawableStart="@drawable/ic_fax"
+          android:drawablePadding="@dimen/margin_8"
+          tools:text="@string/wedding_fax"
+          android:text="@string/wedding_fax"/>
+
+      <TextView
+          android:id="@+id/location_wedding_mobile"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/location_wedding_fax"
+          android:layout_marginTop="@dimen/margin_16"
+          android:textSize="@dimen/text_size_20"
+          android:textColor="@android:color/black"
+          android:drawableStart="@drawable/ic_mobile"
+          android:drawablePadding="@dimen/margin_8"
+          tools:text="@string/wedding_mobile"
+          android:text="@string/wedding_mobile"/>
+
+      <TextView
+          android:id="@+id/location_wedding_email"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/location_wedding_mobile"
+          android:layout_marginTop="@dimen/margin_16"
+          android:textSize="@dimen/text_size_20"
+          android:textColor="@android:color/black"
+          android:drawableStart="@drawable/ic_mail"
+          android:drawablePadding="@dimen/margin_8"
+          tools:text="@string/wedding_email"
+          android:text="@string/wedding_email"/>
+
+      </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/location_reinickendorf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/office_location_screenshot_reinickendorf"
-        android:layout_below="@id/office_location_wedding"
-        android:scaleType="fitXY">
-    </ImageView>
+        android:gravity="start|center_vertical"
+        android:layout_marginTop="@dimen/margin_32"
+        android:layout_marginBottom="@dimen/margin_16">
 
-  </RelativeLayout>
+      <TextView
+          android:id="@+id/location_reinickendorf_title"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="@dimen/text_size_32"
+          android:layout_marginStart="@dimen/margin_32"
+          android:textStyle="bold"
+          android:textColor="@color/red_700"
+          tools:text="@string/reinickendorf_title"
+          android:text="@string/reinickendorf_title"/>
+
+      <TextView
+          android:id="@+id/location_reinickendorf_address"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/location_reinickendorf_title"
+          android:layout_marginTop="@dimen/margin_12"
+          android:textSize="@dimen/text_size_20"
+          android:textColor="@android:color/black"
+          android:drawableStart="@drawable/ic_location"
+          android:drawablePadding="@dimen/margin_8"
+          tools:text="@string/reinickendorf_address"
+          android:text="@string/reinickendorf_address"/>
+
+      <TextView
+          android:id="@+id/location_reinickendorf_phone_1"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/location_reinickendorf_address"
+          android:layout_marginTop="@dimen/margin_32"
+          android:textSize="@dimen/text_size_20"
+          android:textColor="@android:color/black"
+          android:textStyle="bold"
+          android:drawableStart="@drawable/ic_telephone"
+          android:drawablePadding="@dimen/margin_8"
+          tools:text="@string/reinickendorf_phone_1"
+          android:text="@string/reinickendorf_phone_1"/>
+
+      <TextView
+          android:id="@+id/location_reinickendorf_fax"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/location_reinickendorf_phone_1"
+          android:layout_marginTop="@dimen/margin_16"
+          android:textSize="@dimen/text_size_20"
+          android:textColor="@android:color/black"
+          android:drawableStart="@drawable/ic_fax"
+          android:drawablePadding="@dimen/margin_8"
+          tools:text="@string/reinickendorf_fax"
+          android:text="@string/reinickendorf_fax"/>
+
+      <TextView
+          android:id="@+id/location_reinickendorf_mobile"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/location_reinickendorf_fax"
+          android:layout_marginTop="@dimen/margin_16"
+          android:textSize="@dimen/text_size_20"
+          android:textColor="@android:color/black"
+          android:drawableStart="@drawable/ic_mobile"
+          android:drawablePadding="@dimen/margin_8"
+          tools:text="@string/reinickendorf_mobile"
+          android:text="@string/reinickendorf_mobile"/>
+
+      <TextView
+          android:id="@+id/location_reinickendorf_email"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/location_reinickendorf_mobile"
+          android:layout_marginTop="@dimen/margin_16"
+          android:textSize="@dimen/text_size_20"
+          android:textColor="@android:color/black"
+          android:drawableStart="@drawable/ic_mail"
+          android:drawablePadding="@dimen/margin_8"
+          tools:text="@string/reinickendorf_email"
+          android:text="@string/reinickendorf_email"/>
+
+    </RelativeLayout>
+
+
+  </LinearLayout>
 
 
 </ScrollView>

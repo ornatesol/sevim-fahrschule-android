@@ -47,4 +47,25 @@
   <string name="express_fuehrerschein">Express Führerschein</string>
   <string name="antraege">Bürgeramt Anträge über die Fahrschule </string>
 
+  <!-- Standorte -->
+  <!-- Wedding -->
+  <string name="wedding_title">WEDDING</string>
+  <string name="wedding_address">U-Bhf. Osloer Str. \nSchwedenstraße 18, 13357 Berlin</string>
+  <string name="wedding_phone_1">Tel.: 030 &#8211; 755 69 585</string>
+  <string name="wedding_phone_2">Tel.: 030 &#8211; 755 69 587</string>
+  <string name="wedding_fax">Fax: 030 &#8211; 755 69 586</string>
+  <string name="wedding_mobile">Mobil: 0178 &#8211; 149 39 98</string>
+  <string name="wedding_email">Email: info@fahrschule-sevim.de</string>
+  
+  <!-- Reinickendorf -->
+  <string name="reinickendorf_title">REINICKENDORF</string>
+  <string name="reinickendorf_address">U-Bhf. Scharnweberstr. \nScharnweberstraße 60, 13405 Berlin </string>
+  <string name="reinickendorf_phone_1">Tel.: 030 &#8211; 65 77 05 91</string>
+  <string name="reinickendorf_fax">Fax: 030 &#8211; 65 77 05 95</string>
+  <string name="reinickendorf_mobile">Mobil: 0178 &#8211; 149 55 59</string>
+  <string name="reinickendorf_email">Email: post@fahrschule-sevim.de</string>
+
+  <string name="sending_email_message">Zuschicken E-Mail...</string>
+
+
 </resources>
