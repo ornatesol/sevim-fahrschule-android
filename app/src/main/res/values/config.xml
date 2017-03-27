@@ -4,4 +4,6 @@
     tools:locale="en">
 
   <string name="learning_site_url">http://www.fahrschule-sevim-lernen.de</string>
+  <string name="location_wedding_gps">52.554734, 13.375859</string>
+  <string name="location_reinickendorf_gps">52.568155, 13.312803</string>
 </resources>
