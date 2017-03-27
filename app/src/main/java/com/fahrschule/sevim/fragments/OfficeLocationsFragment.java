@@ -1,22 +1,18 @@
 package com.fahrschule.sevim.fragments;
 
-import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import butterknife.BindView;
 import butterknife.OnClick;
 import com.fahrschule.sevim.R;
 
-//TODO make location text clickable to open Google Maps. Add bubble icon
-//TODO make phone and email text label clickable to perform the right action
+import static com.fahrschule.sevim.utils.Utils.launchGoogleMapsWithMarker;
+
 public class OfficeLocationsFragment extends BaseFragment {
 
     public static OfficeLocationsFragment newInstance() {
@@ -34,37 +30,66 @@ public class OfficeLocationsFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
+    //Wedding Section Interactions
+
     @OnClick(R.id.location_wedding_address)
     protected void onWeddingAddressClick() {
-        String gpsCoordinates[] = getString(R.string.location_wedding_gps).split(",");
-        launchGoogleMapsWithMarker(gpsCoordinates[0], gpsCoordinates[1],
+        String gpsCoordinates[] = getString(R.string.wedding_gps).split(",");
+        launchGoogleMapsWithMarker(getActivity(), gpsCoordinates[0], gpsCoordinates[1],
                 getString(R.string.wedding_title));
     }
 
-    private void launchGoogleMapsWithMarker(String lat, String lon, String label) {
-        try {
-            Intent intent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("geo:" + lat
-                            + "," + lon
-                            + "?q=" + lat
-                            + "," + lon
-                            + "(" + label + ")"));
-            intent.setComponent(new ComponentName(
-                    "com.google.android.apps.maps",
-                    "com.google.android.maps.MapsActivity"));
-            getActivity().startActivity(intent);
-        } catch (ActivityNotFoundException e) {
+    @OnClick(R.id.location_wedding_phone_1)
+    protected void onWeddingPhone1Click() {
+        dialContactPhone(getString(R.string.wedding_phone_1_number));
+    }
 
-            try {
-                getActivity().startActivity(new Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("market://details?id=com.google.android.apps.maps")));
-            } catch (ActivityNotFoundException anfe) {
-                getActivity().startActivity(new Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("http://play.google.com/store/apps/details?id=com.google.android.apps.maps")));
-            }
-            e.printStackTrace();
-        }
+    @OnClick(R.id.location_wedding_phone_2)
+    protected void onWeddingPhone2Click() {
+        dialContactPhone(getString(R.string.wedding_phone_2_number));
+    }
+
+    @OnClick(R.id.location_wedding_mobile)
+    protected void onWeddingMobileClick() {
+        dialContactPhone(getString(R.string.wedding_mobile_number));
+    }
+
+    @OnClick(R.id.location_wedding_email)
+    protected void onWeddingEmailClick() {
+        sendEmail(getString(R.string.wedding_email_id));
+    }
+
+    //Reinickendorf Section Interactions
+
+    @OnClick(R.id.location_reinickendorf_address)
+    protected void onReinickendorfAddressClick() {
+        String gpsCoordinates[] = getString(R.string.reinickendorf_gps).split(",");
+        launchGoogleMapsWithMarker(getActivity(), gpsCoordinates[0], gpsCoordinates[1],
+                getString(R.string.reinickendorf_title));
+    }
+
+    @OnClick(R.id.location_reinickendorf_phone_1)
+    protected void onReinickendorfPhone1Click() {
+        dialContactPhone(getString(R.string.reinickendorf_phone_1_number));
+    }
+
+    @OnClick(R.id.location_reinickendorf_mobile)
+    protected void onReinickendorfobileClick() {
+        dialContactPhone(getString(R.string.reinickendorf_mobile_number));
+    }
+
+    @OnClick(R.id.location_reinickendorf_email)
+    protected void onReinickendorfEmailClick() {
+        sendEmail(getString(R.string.reinickendorf_email_id));
+    }
+
+    private void dialContactPhone(@NonNull final String phoneNumber) {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null)));
+    }
+
+    private void sendEmail(@NonNull final String receiverEmail) {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", receiverEmail, null));
+        startActivity(Intent.createChooser(emailIntent, getString(R.string.sending_email_message)));
     }
 }

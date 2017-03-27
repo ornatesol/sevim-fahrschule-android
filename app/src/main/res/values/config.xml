@@ -4,6 +4,14 @@
     tools:locale="en">
 
   <string name="learning_site_url">http://www.fahrschule-sevim-lernen.de</string>
-  <string name="location_wedding_gps">52.554734, 13.375859</string>
-  <string name="location_reinickendorf_gps">52.568155, 13.312803</string>
+  <string name="wedding_gps">52.554734, 13.375859</string>
+  <string name="wedding_phone_1_number">030 755 69 585</string>
+  <string name="wedding_phone_2_number">030 755 69 587</string>
+  <string name="wedding_mobile_number">0178 149 39 98</string>
+  <string name="wedding_email_id">info@fahrschule-sevim.de</string>
+
+  <string name="reinickendorf_gps">52.568155, 13.312803</string>
+  <string name="reinickendorf_phone_1_number">030 65 77 05 91</string>
+  <string name="reinickendorf_mobile_number">0178 149 55 59</string>
+  <string name="reinickendorf_email_id">post@fahrschule-sevim.de</string>
 </resources>

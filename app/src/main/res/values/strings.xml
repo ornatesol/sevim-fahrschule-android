@@ -65,5 +65,7 @@
   <string name="reinickendorf_mobile">Mobil: 0178 &#8211; 149 55 59</string>
   <string name="reinickendorf_email">Email: post@fahrschule-sevim.de</string>
 
+  <string name="sending_email_message">Zuschicken E-Mail...</string>
+
 
 </resources>
