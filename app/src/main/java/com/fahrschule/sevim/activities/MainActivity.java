@@ -82,21 +82,27 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
             switch (menuItem) {
                 case LEARNINGSITE:
                     loadLearningSiteContent();
+                    toolbar.setTitle(R.string.learning_site);
                     break;
                 case MESSAGES:
                     showMessagesContent();
+                    toolbar.setTitle(R.string.messages);
                     break;
                 case INFOS:
                     showInfosContent();
+                    toolbar.setTitle(R.string.infos);
                     break;
                 case THEORYCALENDAR:
                     showTheoryCalendarContent();
+                    toolbar.setTitle(R.string.theory_calendar);
                     break;
                 case LOCATIONS:
                     showOfficeLocationsContent();
+                    toolbar.setTitle(R.string.locations);
                     break;
                 case OFFICETIMING:
                     showOfficeTimingContent();
+                    toolbar.setTitle(R.string.office_timing);
                     break;
                 default:
                     showDefaultContent();
