@@ -4,30 +4,30 @@
   <group android:checkableBehavior="single">
     <item
         android:id="@+id/nav_learning_site"
-        android:icon="@drawable/ic_menu_camera"
+        android:icon="@drawable/ic_lernseite"
         android:title="@string/learning_site" />
     <item
         android:id="@+id/nav_messages"
-        android:icon="@drawable/ic_menu_gallery"
+        android:icon="@drawable/ic_nachrichten"
         android:title="@string/messages" />
     <item
         android:id="@+id/nav_infos"
-        android:icon="@drawable/ic_menu_slideshow"
+        android:icon="@drawable/ic_infos"
         android:title="@string/infos" />
     <item
         android:id="@+id/nav_theory_calendar"
-        android:icon="@drawable/ic_menu_manage"
+        android:icon="@drawable/ic_theoriezeiten"
         android:title="@string/theory_calendar" />
 
     <item android:title="@string/contact">
       <menu>
         <item
             android:id="@+id/nav_locations"
-            android:icon="@drawable/ic_menu_share"
+            android:icon="@drawable/ic_standorte"
             android:title="@string/locations" />
         <item
             android:id="@+id/nav_office_timings"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/ic_burozeiten"
             android:title="@string/office_timing" />
       </menu>
     </item>
