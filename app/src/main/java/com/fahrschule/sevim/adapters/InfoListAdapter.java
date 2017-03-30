@@ -65,7 +65,7 @@ public class InfoListAdapter extends BaseAdapter {
         @BindView(R.id.list_item_infos_text)
         TextView title;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }
