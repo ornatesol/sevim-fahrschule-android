@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.fahrschule.sevim.R;
-import com.fahrschule.sevim.fragments.dummy.MessageContent;
-import com.fahrschule.sevim.fragments.dummy.MessageContent.MessageItem;
+import com.fahrschule.sevim.models.MessageContent;
+import com.fahrschule.sevim.models.MessageContent.MessageItem;
 
 /**
  * A fragment representing a list of Items.
@@ -76,7 +76,6 @@ public class MessagesListFragment extends BaseFragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(MessageItem item);
     }
 }

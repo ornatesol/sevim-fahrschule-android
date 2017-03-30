@@ -1,4 +1,4 @@
-package com.fahrschule.sevim.fragments.dummy;
+package com.fahrschule.sevim.models;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,12 +42,7 @@ public class MessageContent {
     }
 
     private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
+        return "Details about Item: "+ position;
     }
 
     /**

@@ -10,15 +10,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.fragments.MessagesListFragment.OnListFragmentInteractionListener;
-import com.fahrschule.sevim.fragments.dummy.MessageContent.MessageItem;
+import com.fahrschule.sevim.models.MessageContent.MessageItem;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link MessageItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecyclerViewAdapter
         .ViewHolder> {
 
@@ -44,8 +39,9 @@ public class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecy
         holder.timeStamp.setText(values.get(position).timestamp);
 
         holder.view.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                if (null != listener) {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
                     listener.onListFragmentInteraction(holder.item);
@@ -54,7 +50,8 @@ public class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecy
         });
     }
 
-    @Override public int getItemCount() {
+    @Override
+    public int getItemCount() {
         return values.size();
     }
 
