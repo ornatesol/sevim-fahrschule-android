@@ -84,13 +84,7 @@ public abstract class BaseActivity extends AppCompatActivity
             }
         });
     }
-
-    @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-
-    }
-
+    
     private void setupToolbar() {
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
