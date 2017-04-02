@@ -56,7 +56,7 @@
   <string name="wedding_fax">Fax: 030 &#8211; 755 69 586</string>
   <string name="wedding_mobile">Mobil: 0178 &#8211; 149 39 98</string>
   <string name="wedding_email">Email: info@fahrschule-sevim.de</string>
-  
+
   <!-- Reinickendorf -->
   <string name="reinickendorf_title">REINICKENDORF</string>
   <string name="reinickendorf_address">U-Bhf. Scharnweberstr. \nScharnweberstraße 60, 13405 Berlin </string>
@@ -66,6 +66,9 @@
   <string name="reinickendorf_email">Email: post@fahrschule-sevim.de</string>
 
   <string name="sending_email_message">Zuschicken E-Mail...</string>
+
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

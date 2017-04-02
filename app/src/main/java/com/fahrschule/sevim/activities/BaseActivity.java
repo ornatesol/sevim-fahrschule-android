@@ -45,11 +45,6 @@ public abstract class BaseActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             showDefaultFragment();
         }
-
-        //TODO confirm from Tauseef
-        //if(!Utils.isOnline(this)) {
-        //    Utils.showConnectionErrorDialog(this, getString(R.string.error_no_connection));
-        //}
     }
 
     @Override
@@ -168,4 +163,5 @@ public abstract class BaseActivity extends AppCompatActivity
          */
         void handleSelection(String selectedMenu);
     }
+
 }

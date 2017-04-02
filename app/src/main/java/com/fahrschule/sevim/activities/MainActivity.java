@@ -9,6 +9,7 @@ import com.fahrschule.sevim.fragments.MainFragment;
 import com.fahrschule.sevim.fragments.MessageDetailFragment;
 import com.fahrschule.sevim.fragments.MessagesListFragment;
 import com.fahrschule.sevim.fragments.OfficeLocationsFragment;
+import com.fahrschule.sevim.fragments.SplashScreenFragment;
 import com.fahrschule.sevim.models.MessageContent;
 import com.fahrschule.sevim.models.NavigationMenuItem;
 import com.fahrschule.sevim.utils.Utils;
@@ -22,13 +23,22 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
 
     @Override
     protected void showDefaultFragment() {
-        showDefaultContent();
+        showSplashScreenContent();
+    }
+
+    private void showSplashScreenContent() {
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
+        Fragment fragment = SplashScreenFragment.newInstance();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, fragment)
+                .commit();
     }
 
     private void showDefaultContent() {
-        String sampleText = getString(R.string.generic_welcome_message,
-                "Aktuell");
-        commitToMainFragment(sampleText);
+        showInfosContent();
     }
 
     private void showTheoryCalendarContent() {
