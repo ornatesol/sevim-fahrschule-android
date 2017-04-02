@@ -10,6 +10,7 @@ import com.fahrschule.sevim.fragments.MessageDetailFragment;
 import com.fahrschule.sevim.fragments.MessagesListFragment;
 import com.fahrschule.sevim.fragments.OfficeLocationsFragment;
 import com.fahrschule.sevim.fragments.SplashScreenFragment;
+import com.fahrschule.sevim.fragments.TheoriezeitenFragment;
 import com.fahrschule.sevim.models.MessageContent;
 import com.fahrschule.sevim.models.NavigationMenuItem;
 import com.fahrschule.sevim.utils.Utils;
@@ -42,9 +43,10 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
     }
 
     private void showTheoryCalendarContent() {
-        String sampleText = getString(R.string.generic_welcome_message,
-                getString(R.string.theory_calendar));
-        commitToMainFragment(sampleText);
+        Fragment fragment = TheoriezeitenFragment.newInstance();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, fragment)
+                .commit();
     }
 
     private void showMessagesContent() {

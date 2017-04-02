@@ -54,9 +54,6 @@ public class SplashScreenFragment extends BaseFragment {
             actionBar.show();
         }
 
-        Fragment fragment = InfoFragment.newInstance();
-        getFragmentManager().beginTransaction()
-                .replace(R.id.content, fragment)
-                .commit();
+        showDefaultContent();
     }
 }

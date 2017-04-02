@@ -17,6 +17,8 @@
   <string name="browser_app_not_found">Es konnte keine Browser-App gefunden werden.</string>
   <string name="error_no_connection">Keine Internetverbindung</string>
   <string name="connection_error_dialog_title">Verbindungsfehler</string>
+  <string name="error_generic">Sorry, da ist etwas schief gelaufen!</string>
+  <string name="error_no_connection_data_is_old">Keine Internetverbindung. Daten könnten alt sein.</string>
 
   <!-- App Specific Text -->
   <string name="ok">Ok</string>
@@ -67,8 +69,10 @@
 
   <string name="sending_email_message">Zuschicken E-Mail...</string>
 
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <!-- Theoriezeiten -->
+  <string name="german">Deutsch</string>
+  <string name="english">English</string>
+  <string name="turkish">Türkisch</string>
 
 
 </resources>
