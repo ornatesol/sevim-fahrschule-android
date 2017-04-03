@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <RadioGroup
+      android:id="@+id/radio"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/margin_16"
+      android:layout_marginStart="@dimen/margin_32">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lernseite_dialog_title"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="@dimen/text_size_20"
+        android:textStyle="bold"
+        />
+
+    <RadioButton
+        android:id="@+id/option_lernseite_website"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:text="@string/option_lernseite_website"
+        android:textSize="@dimen/text_size_16"
+        android:textColor="@color/black"/>
+
+    <RadioButton
+        android:id="@+id/option_lernseite_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:text="@string/option_lernseite_play"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_16"/>
+  </RadioGroup>
+
+</LinearLayout>

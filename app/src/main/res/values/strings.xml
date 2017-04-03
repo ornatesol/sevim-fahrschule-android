@@ -26,6 +26,12 @@
   <string name="office_timing_value">Bürozeiten:-\n\n Montag - Freitag : von 9:00 - 19:00 Uhr
     \n\nSamstag: von 10:00 - 15:00 Uhr</string>
 
+  <!-- Learnseite -->
+  <string name="lernseite_dialog_title">Wähle ein Ziel</string>
+  <string name="cancel">Abbrechen</string>
+  <string name="option_lernseite_website">Website</string>
+  <string name="option_lernseite_play">App</string>
+
   <!-- Info List Items -->
   <string name="schaltung">Automatik &amp; Schaltung</string>
   <string name="fahrlehrer">Fahrlehrer/innen</string>

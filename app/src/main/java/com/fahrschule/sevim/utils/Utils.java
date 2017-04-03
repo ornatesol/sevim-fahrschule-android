@@ -1,6 +1,5 @@
 package com.fahrschule.sevim.utils;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
@@ -32,12 +31,17 @@ public class Utils {
         }
     }
 
-public static void openUrlInBrowser(Activity activity, String url) {
+    /**
+     * Opens the url passed as parameter in a browser
+     * @param context
+     * @param url
+     */
+    public static void openUrlInBrowser(@NonNull final Context context, String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        if (Utils.isIntentSafe(activity, intent)) {
-            activity.startActivity(intent);
+        if (Utils.isIntentSafe(context, intent)) {
+            context.startActivity(intent);
         } else {
-            Toast.makeText(activity, R.string.browser_app_not_found, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, R.string.browser_app_not_found, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -116,6 +120,22 @@ public static void openUrlInBrowser(Activity activity, String url) {
                         Uri.parse("http://play.google.com/store/apps/details?id=com.google.android.apps.maps")));
             }
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Checks if app is already installed or not
+     * @param packageName
+     * @param context
+     * @return
+     */
+    public static boolean isApplicationInstalled(String packageName, Context context) {
+        PackageManager pm = context.getPackageManager();
+        try {
+            pm.getApplicationInfo(packageName, 0);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
         }
     }
 }

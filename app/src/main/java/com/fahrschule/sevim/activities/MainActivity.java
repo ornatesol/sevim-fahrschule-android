@@ -1,10 +1,15 @@
 package com.fahrschule.sevim.activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.RadioGroup;
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.fragments.InfoFragment;
 import com.fahrschule.sevim.fragments.MainFragment;
@@ -72,10 +77,9 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
 
     private void loadLearningSiteContent() {
         if(!Utils.isOnline(this)) {
-            showDefaultContent();
             Utils.showConnectionErrorDialog(this, getString(R.string.error_no_connection));
         } else {
-            Utils.openUrlInBrowser(this, getString(R.string.learning_site_url));
+            showLernsiteDialog();
         }
     }
 
@@ -106,7 +110,6 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
             switch (menuItem) {
                 case LEARNINGSITE:
                     loadLearningSiteContent();
-                    toolbar.setTitle(R.string.learning_site);
                     break;
                 case MESSAGES:
                     showMessagesContent();
@@ -142,6 +145,48 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
                 .replace(R.id.content, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    private void showLernsiteDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Get the layout inflater
+        LayoutInflater inflater = getLayoutInflater();
+        View customView = inflater.inflate(R.layout.lernseite_custom_dialog, null);
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setTitle(R.string.learning_site);
+        builder.setView(customView);
+
+        RadioGroup rg = (RadioGroup) customView.findViewById(R.id.radio);
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId){
+                    case R.id.option_lernseite_website:
+                        Utils.openUrlInBrowser(MainActivity.this,
+                                getString(R.string.learning_site_url));
+                        break;
+                    case R.id.option_lernseite_app:
+                        String packageName = getString(R.string.learning_app_google_play_package);
+                        if(Utils.isApplicationInstalled(packageName, MainActivity.this)) {
+                            Intent intent = getPackageManager()
+                                    .getLaunchIntentForPackage(packageName);
+                            startActivity(intent);
+                        } else {
+                            Utils.openUrlInBrowser(MainActivity.this,
+                                    getString(R.string.learning_app_google_play_url));
+                        }
+                        break;
+                }
+            }
+        });
+
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
     }
 
 }
