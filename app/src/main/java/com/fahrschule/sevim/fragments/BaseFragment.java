@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import com.fahrschule.sevim.R;
 
 public abstract class BaseFragment extends Fragment {
 
@@ -21,5 +22,12 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroyView() {
         unBinder.unbind();
         super.onDestroyView();
+    }
+
+    public void showDefaultContent() {
+        Fragment fragment = InfoFragment.newInstance();
+        getFragmentManager().beginTransaction()
+                .replace(R.id.content, fragment)
+                .commit();
     }
 }

@@ -1,0 +1,57 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.fahrschule.sevim.fragments.TheoriezeitenFragment">
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/margin_16">
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/main_plan"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        tools:src="@drawable/theory_main_image"/>
+
+    <Button
+        android:id="@+id/show_german_plan"
+        android:layout_below="@id/main_plan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        tools:text="@string/german"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_20"
+        android:textColor="@color/colorAccent"
+        android:text="@string/german"/>
+
+    <Button
+        android:id="@+id/show_english_plan"
+        android:layout_below="@id/show_german_plan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        tools:text="@string/english"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_20"
+        android:textColor="@color/colorAccent"
+        android:text="@string/english"/>
+
+    <Button
+        android:id="@+id/show_turkish_plan"
+        android:layout_below="@id/show_english_plan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_32"
+        tools:text="@string/turkish"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_20"
+        android:textColor="@color/colorAccent"
+        android:text="@string/turkish"/>
+
+  </RelativeLayout>
+
+</ScrollView>

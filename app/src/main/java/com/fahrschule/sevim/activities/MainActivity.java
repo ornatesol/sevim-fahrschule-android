@@ -2,6 +2,8 @@ package com.fahrschule.sevim.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.fragments.InfoFragment;
@@ -10,6 +12,7 @@ import com.fahrschule.sevim.fragments.MessageDetailFragment;
 import com.fahrschule.sevim.fragments.MessagesListFragment;
 import com.fahrschule.sevim.fragments.OfficeLocationsFragment;
 import com.fahrschule.sevim.fragments.SplashScreenFragment;
+import com.fahrschule.sevim.fragments.TheoriezeitenFragment;
 import com.fahrschule.sevim.models.MessageContent;
 import com.fahrschule.sevim.models.NavigationMenuItem;
 import com.fahrschule.sevim.utils.Utils;
@@ -19,6 +22,11 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
 
     public static Intent newIntent(final Context context) {
         return new Intent(context, MainActivity.class);
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -42,9 +50,10 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
     }
 
     private void showTheoryCalendarContent() {
-        String sampleText = getString(R.string.generic_welcome_message,
-                getString(R.string.theory_calendar));
-        commitToMainFragment(sampleText);
+        Fragment fragment = TheoriezeitenFragment.newInstance();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, fragment)
+                .commit();
     }
 
     private void showMessagesContent() {
@@ -134,4 +143,5 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
                 .addToBackStack(null)
                 .commit();
     }
+
 }

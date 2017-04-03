@@ -63,4 +63,8 @@ dependencies {
   //Rx
   compile "io.reactivex:rxjava:1.2.1"
   compile "io.reactivex:rxandroid:1.2.1"
+
+  //Loading Images
+  compile 'com.squareup.picasso:picasso:2.5.2'
+  compile 'com.github.chrisbanes:PhotoView:2.0.0'
 }
