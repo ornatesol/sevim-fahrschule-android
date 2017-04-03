@@ -2,6 +2,8 @@ package com.fahrschule.sevim.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.fragments.InfoFragment;
@@ -10,19 +12,21 @@ import com.fahrschule.sevim.fragments.MessageDetailFragment;
 import com.fahrschule.sevim.fragments.MessagesListFragment;
 import com.fahrschule.sevim.fragments.OfficeLocationsFragment;
 import com.fahrschule.sevim.fragments.SplashScreenFragment;
-import com.fahrschule.sevim.fragments.TheorieLocalizedGalleryFragment;
 import com.fahrschule.sevim.fragments.TheoriezeitenFragment;
-import com.fahrschule.sevim.models.TheoriePhotoContent;
 import com.fahrschule.sevim.models.MessageContent;
 import com.fahrschule.sevim.models.NavigationMenuItem;
 import com.fahrschule.sevim.utils.Utils;
 
 public class MainActivity extends BaseActivity implements BaseActivity.NavItemActionTargetListener,
-        MessagesListFragment.OnListFragmentInteractionListener,
-        TheorieLocalizedGalleryFragment.OnListFragmentInteractionListener {
+        MessagesListFragment.OnListFragmentInteractionListener {
 
     public static Intent newIntent(final Context context) {
         return new Intent(context, MainActivity.class);
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -140,8 +144,4 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
                 .commit();
     }
 
-    @Override
-    public void onListFragmentInteraction(TheoriePhotoContent.TheoriePhotoItem item) {
-
-    }
 }

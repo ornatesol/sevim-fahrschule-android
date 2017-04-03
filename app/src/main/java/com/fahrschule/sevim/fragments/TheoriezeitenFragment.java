@@ -12,6 +12,7 @@ import butterknife.OnClick;
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.models.TheorieImageItemSource;
 import com.fahrschule.sevim.utils.Utils;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -31,7 +32,7 @@ public class TheoriezeitenFragment extends BaseFragment {
     }
 
     @BindView(R.id.main_plan)
-    ImageView mainTheoriePlan;
+    PhotoView mainTheoriePlan;
 
     public static TheoriezeitenFragment newInstance() {
         return new TheoriezeitenFragment();

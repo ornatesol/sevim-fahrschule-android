@@ -9,9 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.fahrschule.sevim.R;
-import com.fahrschule.sevim.models.TheoriePhotoContent;
-import com.fahrschule.sevim.models.TheoriePhotoContent.TheoriePhotoItem;
 import com.fahrschule.sevim.models.TheorieImageItemSource;
+import com.fahrschule.sevim.models.TheoriePhotoContent;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -20,9 +19,8 @@ import rx.schedulers.Schedulers;
 public class TheorieLocalizedGalleryFragment extends BaseFragment {
 
     private static final String ARG_LANGUAGE_PLAN = "language_plan";
-    private static final int columnCount = 2;
+    private static final int columnCount = 1;
     private String languagePlan = TheoriezeitenFragment.SUPPORTED_LANGUAGES.DE.name();
-    private OnListFragmentInteractionListener listener;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -65,7 +63,7 @@ public class TheorieLocalizedGalleryFragment extends BaseFragment {
                         @Override public void call(TheoriePhotoContent dummyContent) {
                             recyclerView.setAdapter(
                                     new TheoriePhotoItemRecyclerViewAdapter(dummyContent.getItems(),
-                                            listener, languagePlan));
+                                            languagePlan));
                         }
                     }, new Action1<Throwable>() {
                         @Override
@@ -108,33 +106,4 @@ public class TheorieLocalizedGalleryFragment extends BaseFragment {
         return dummyContent;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            listener = (OnListFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        listener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(TheoriePhotoItem item);
-    }
 }
