@@ -23,7 +23,7 @@
   <!-- App Specific Text -->
   <string name="ok">Ok</string>
   <string name="generic_welcome_message">%s Data wird kommen hier.</string>
-  <string name="office_timing_value">Bürozeiten:-\n\n Montag - Freitag : von 9:00 - 19:00 Uhr
+  <string name="office_timing_value">\n\n Montag - Freitag : von 9:00 - 19:00 Uhr
     \n\nSamstag: von 10:00 - 15:00 Uhr</string>
 
   <!-- Learnseite -->
