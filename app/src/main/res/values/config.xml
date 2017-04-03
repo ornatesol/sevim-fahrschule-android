@@ -15,14 +15,4 @@
   <string name="reinickendorf_mobile_number">0178 149 55 59</string>
   <string name="reinickendorf_email_id">post@fahrschule-sevim.de</string>
 
-  <!-- Theoriezeiten Image Urls -->
-  <string name="theorie_main_plan_url" formatted="false">http://fahrschule-sevim.ornatesol.com/theory/theory_1.png</string>
-  <string name="theorie_de_plan_1_url" formatted="false">http://fahrschule-sevim.ornatesol.com/theory/de/1_Deutsch_Di_Do_Sa.png</string>
-  <string name="theorie_de_plan_2_url" formatted="false">http://fahrschule-sevim.ornatesol.com/theory/de/2_Deutsch_Nachmittag_Page_1.png</string>
-  <string name="theorie_de_plan_3_url" formatted="false">http://fahrschule-sevim.ornatesol.com/theory/de/3_Deutsch_Nachmittag_Page_2.png</string>
-  <string name="theorie_de_plan_4_url" formatted="false">http://fahrschule-sevim.ornatesol.com/theory/de/4_Scharni%20Vormittag%20Deutsch.png</string>
-  <string name="theorie_en_plan_1_url" formatted="false">http://fahrschule-sevim.ornatesol.com/theory/en/1_ENGLISCH_YEP_YENI.png</string>
-  <string name="theorie_tr_plan_1_url" formatted="false">http://fahrschule-sevim.ornatesol.com/theory/tr/1_DI%20DO%20T%C3%9CRKCE%20YEP%20YENI.png</string>
-  <string name="theorie_tr_plan_2_url" formatted="false">http://fahrschule-sevim.ornatesol.com/theory/tr/2_Scharni%20T%C3%BCrkisch_Page_1.png</string>
-  <string name="theorie_tr_plan_3_url" formatted="false">http://fahrschule-sevim.ornatesol.com/theory/tr/3_Scharni%20T%C3%BCrkisch_Page_2.png</string>
 </resources>

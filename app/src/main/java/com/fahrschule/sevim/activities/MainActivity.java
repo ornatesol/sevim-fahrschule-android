@@ -10,13 +10,16 @@ import com.fahrschule.sevim.fragments.MessageDetailFragment;
 import com.fahrschule.sevim.fragments.MessagesListFragment;
 import com.fahrschule.sevim.fragments.OfficeLocationsFragment;
 import com.fahrschule.sevim.fragments.SplashScreenFragment;
+import com.fahrschule.sevim.fragments.TheorieLocalizedGalleryFragment;
 import com.fahrschule.sevim.fragments.TheoriezeitenFragment;
+import com.fahrschule.sevim.models.TheoriePhotoContent;
 import com.fahrschule.sevim.models.MessageContent;
 import com.fahrschule.sevim.models.NavigationMenuItem;
 import com.fahrschule.sevim.utils.Utils;
 
 public class MainActivity extends BaseActivity implements BaseActivity.NavItemActionTargetListener,
-        MessagesListFragment.OnListFragmentInteractionListener {
+        MessagesListFragment.OnListFragmentInteractionListener,
+        TheorieLocalizedGalleryFragment.OnListFragmentInteractionListener {
 
     public static Intent newIntent(final Context context) {
         return new Intent(context, MainActivity.class);
@@ -135,5 +138,10 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
                 .replace(R.id.content, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void onListFragmentInteraction(TheoriePhotoContent.TheoriePhotoItem item) {
+
     }
 }

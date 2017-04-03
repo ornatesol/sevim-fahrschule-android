@@ -6,15 +6,29 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.ImageView;
 import butterknife.BindView;
+import butterknife.OnClick;
 import com.fahrschule.sevim.R;
+import com.fahrschule.sevim.models.TheorieImageItemSource;
 import com.fahrschule.sevim.utils.Utils;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 public class TheoriezeitenFragment extends BaseFragment {
+
+    enum SUPPORTED_LANGUAGES {
+        DE, EN, TR; //TODO make it dynamic based on urls in text file
+
+        static SUPPORTED_LANGUAGES from(String name) {
+            for(SUPPORTED_LANGUAGES item: values()) {
+                if (item.name().equalsIgnoreCase(name)) {
+                    return item;
+                }
+            }
+            return DE; //default as fallback plan
+        }
+    }
 
     @BindView(R.id.main_plan)
     ImageView mainTheoriePlan;
@@ -55,16 +69,41 @@ public class TheoriezeitenFragment extends BaseFragment {
 
     private void loadMainPlanImageFromNetwork() {
         Picasso.with(getActivity())
-                .load(getString(R.string.theorie_main_plan_url))
+                .load(TheorieImageItemSource.getMainPlan())
                 .error(R.string.error_generic)
+                .noFade()
                 .networkPolicy(NetworkPolicy.NO_CACHE)
                 .into(mainTheoriePlan);
     }
 
     private void loadMainPlanImageFromCache() {
         Picasso.with(getActivity())
-                .load(getString(R.string.theorie_main_plan_url))
+                .load(TheorieImageItemSource.getMainPlan())
+                .noFade()
                 .error(R.string.error_generic)
                 .into(mainTheoriePlan);
+    }
+
+    @OnClick(R.id.show_german_plan)
+    protected void showGermanPlan() {
+        launchTheoriPlanPerLanguage(SUPPORTED_LANGUAGES.DE.name());
+    }
+
+    @OnClick(R.id.show_english_plan)
+    protected void showEnglishPlan() {
+        launchTheoriPlanPerLanguage(SUPPORTED_LANGUAGES.EN.name());
+    }
+
+    @OnClick(R.id.show_turkish_plan)
+    protected void showTurkishPlan() {
+        launchTheoriPlanPerLanguage(SUPPORTED_LANGUAGES.TR.name());
+    }
+
+    private void launchTheoriPlanPerLanguage(String language) {
+        Fragment fragment = TheorieLocalizedGalleryFragment.newInstance(language);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.content, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }
