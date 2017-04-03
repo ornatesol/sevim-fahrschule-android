@@ -1,6 +1,5 @@
 package com.fahrschule.sevim.models;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;

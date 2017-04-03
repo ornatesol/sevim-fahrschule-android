@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
   <group android:checkableBehavior="single">
     <item
         android:id="@+id/nav_learning_site"
@@ -21,14 +20,16 @@
 
     <item android:title="@string/contact">
       <menu>
-        <item
-            android:id="@+id/nav_locations"
-            android:icon="@drawable/ic_standorte"
-            android:title="@string/locations" />
-        <item
-            android:id="@+id/nav_office_timings"
-            android:icon="@drawable/ic_burozeiten"
-            android:title="@string/office_timing" />
+        <group android:checkableBehavior="single">
+          <item
+              android:id="@+id/nav_locations"
+              android:icon="@drawable/ic_standorte"
+              android:title="@string/locations" />
+          <item
+              android:id="@+id/nav_office_timings"
+              android:icon="@drawable/ic_burozeiten"
+              android:title="@string/office_timing" />
+        </group>
       </menu>
     </item>
   </group>

@@ -9,6 +9,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.models.TheoriePhotoContent.TheoriePhotoItem;
+import com.fahrschule.sevim.utils.Utils;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import java.util.List;
@@ -34,7 +35,11 @@ public class TheoriePhotoItemRecyclerViewAdapter extends
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.item = values.get(position);
-        loadLanguagePlanImageFromNetwork(holder.imageView, holder.item.imageUrl);
+        if(Utils.isOnline(holder.imageView.getContext())) {
+            loadLanguagePlanImageFromNetwork(holder.imageView, holder.item.imageUrl);
+        } else {
+            loadLanguagePlanImageFromCache(holder.imageView, holder.item.imageUrl);
+        }
         holder.imageView.setImageDrawable(holder.imageView.getDrawable());
     }
 
@@ -43,6 +48,14 @@ public class TheoriePhotoItemRecyclerViewAdapter extends
                 .load(url)
                 .error(R.string.error_generic)
                 .networkPolicy(NetworkPolicy.NO_CACHE)
+                .noFade()
+                .into(imageHolder);
+    }
+
+    private void loadLanguagePlanImageFromCache(ImageView imageHolder, String url) {
+        Picasso.with(imageHolder.getContext())
+                .load(url)
+                .error(R.string.error_generic)
                 .noFade()
                 .into(imageHolder);
     }
