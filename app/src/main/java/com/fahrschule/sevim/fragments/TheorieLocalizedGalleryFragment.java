@@ -3,7 +3,7 @@ package com.fahrschule.sevim.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +19,6 @@ import rx.schedulers.Schedulers;
 public class TheorieLocalizedGalleryFragment extends BaseFragment {
 
     private static final String ARG_LANGUAGE_PLAN = "language_plan";
-    private static final int columnCount = 1;
     private String languagePlan = TheoriezeitenFragment.SUPPORTED_LANGUAGES.DE.name();
 
     /**
@@ -55,15 +54,15 @@ public class TheorieLocalizedGalleryFragment extends BaseFragment {
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             final RecyclerView recyclerView = (RecyclerView) view;
-            recyclerView.setLayoutManager(new GridLayoutManager(context, columnCount));
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
             Observable.just(populateModel(languagePlan))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Action1<TheoriePhotoContent>() {
-                        @Override public void call(TheoriePhotoContent dummyContent) {
+                        @Override public void call(TheoriePhotoContent photoContent) {
                             recyclerView.setAdapter(
-                                    new TheoriePhotoItemRecyclerViewAdapter(dummyContent.getItems(),
-                                            languagePlan));
+                                    new TheoriePhotoItemRecyclerViewAdapter(
+                                            photoContent.getItems()));
                         }
                     }, new Action1<Throwable>() {
                         @Override
@@ -76,26 +75,26 @@ public class TheorieLocalizedGalleryFragment extends BaseFragment {
     }
 
     private TheoriePhotoContent populateModel(@NonNull String language) {
-        final TheoriePhotoContent dummyContent = new TheoriePhotoContent();
+        final TheoriePhotoContent photoContent = new TheoriePhotoContent();
         TheoriezeitenFragment.SUPPORTED_LANGUAGES supportedLanguage =
                 TheoriezeitenFragment.SUPPORTED_LANGUAGES.from(language);
 
         switch (supportedLanguage) {
             case DE:
                 for (int i = 0; i < TheorieImageItemSource.getGermanPlanList().size(); i++) {
-                    dummyContent.createAddItem(TheorieImageItemSource.getGermanPlanList().get(i));
+                    photoContent.createAddItem(TheorieImageItemSource.getGermanPlanList().get(i));
                 }
                 break;
 
             case EN:
                 for (int i = 0; i < TheorieImageItemSource.getEnglishPlanList().size(); i++) {
-                    dummyContent.createAddItem(TheorieImageItemSource.getEnglishPlanList().get(i));
+                    photoContent.createAddItem(TheorieImageItemSource.getEnglishPlanList().get(i));
                 }
                 break;
 
             case TR:
                 for (int i = 0; i < TheorieImageItemSource.getTurkishPlanList().size(); i++) {
-                    dummyContent.createAddItem(TheorieImageItemSource.getTurkishPlanList().get(i));
+                    photoContent.createAddItem(TheorieImageItemSource.getTurkishPlanList().get(i));
                 }
                 break;
 
@@ -103,7 +102,7 @@ public class TheorieLocalizedGalleryFragment extends BaseFragment {
                 break;
         }
 
-        return dummyContent;
+        return photoContent;
     }
 
 }
