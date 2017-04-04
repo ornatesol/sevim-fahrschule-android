@@ -18,8 +18,6 @@ public class InfoFragment extends BaseFragment {
     @BindView(R.id.info_sources_list_view)
     ListView infoSourcesListView;
 
-    private InfoListAdapter adapter;
-
     public static InfoFragment newInstance() {
         return new InfoFragment();
     }
@@ -35,11 +33,13 @@ public class InfoFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         setupItemSources();
+        View footer = getActivity().getLayoutInflater().inflate(R.layout.view_info_imageview, null);
+        infoSourcesListView.addFooterView(footer);
     }
 
     private void setupItemSources() {
         List<InfoItemsSource> contactSources = InfoItemsSource.getInfoItems();
-        adapter = new InfoListAdapter(contactSources, getActivity());
+        InfoListAdapter adapter = new InfoListAdapter(contactSources, getActivity());
         infoSourcesListView.setAdapter(adapter);
     }
 }
