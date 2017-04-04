@@ -18,11 +18,9 @@ public class TheoriePhotoItemRecyclerViewAdapter extends
         RecyclerView.Adapter<TheoriePhotoItemRecyclerViewAdapter.ViewHolder> {
 
     private final List<TheoriePhotoItem> values;
-    private final String planType;
 
-    public TheoriePhotoItemRecyclerViewAdapter(List<TheoriePhotoItem> items, String planType) {
+    public TheoriePhotoItemRecyclerViewAdapter(List<TheoriePhotoItem> items) {
         values = items;
-        this.planType = planType;
     }
 
     @Override

@@ -12,10 +12,10 @@ import android.view.View;
 import android.widget.RadioGroup;
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.fragments.InfoFragment;
-import com.fahrschule.sevim.fragments.MainFragment;
 import com.fahrschule.sevim.fragments.MessageDetailFragment;
 import com.fahrschule.sevim.fragments.MessagesListFragment;
 import com.fahrschule.sevim.fragments.OfficeLocationsFragment;
+import com.fahrschule.sevim.fragments.OfficeTimingsFragment;
 import com.fahrschule.sevim.fragments.SplashScreenFragment;
 import com.fahrschule.sevim.fragments.TheoriezeitenFragment;
 import com.fahrschule.sevim.models.MessageContent;
@@ -68,8 +68,8 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
                 .commit();
     }
 
-    private void commitToMainFragment(String sampleText) {
-        Fragment fragment = MainFragment.newInstance(sampleText);
+    private void showOfficeTimingContent() {
+        Fragment fragment = OfficeTimingsFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content, fragment)
                 .commit();
@@ -88,11 +88,6 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content, fragment)
                 .commit();
-    }
-
-    private void showOfficeTimingContent() {
-        String timingText = getString(R.string.office_timing_value);
-        commitToMainFragment(timingText);
     }
 
     private void showInfosContent() {
@@ -154,7 +149,6 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
         View customView = inflater.inflate(R.layout.lernseite_custom_dialog, null);
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        builder.setTitle(R.string.learning_site);
         builder.setView(customView);
 
         RadioGroup rg = (RadioGroup) customView.findViewById(R.id.radio);

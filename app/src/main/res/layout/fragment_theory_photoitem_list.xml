@@ -6,9 +6,8 @@
     android:name="com.fahrschule.sevim.fragments.TheorieLocalizedGalleryFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
+    android:layout_marginStart="@dimen/margin_16"
+    android:layout_marginEnd="@dimen/margin_16"
     android:scrollbars="vertical"
-    app:layoutManager="android.support.v7.widget.GridLayoutManager"
     tools:context="com.fahrschule.sevim.fragments.TheorieLocalizedGalleryFragment"
     tools:listitem="@layout/fragment_theoriephotoitem"/>
