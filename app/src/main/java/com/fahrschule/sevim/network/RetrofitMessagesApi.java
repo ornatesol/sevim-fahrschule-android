@@ -46,6 +46,18 @@ public class RetrofitMessagesApi implements MessagesApi {
                 });
     }
 
+    @NonNull
+    private ArrayList<MessageItem> getMessageItemsFake(MessageItem messageItem) {
+        //used this tool http://www.onlineconversion.com/unix_time.htm
+        ArrayList<MessageItem> fakeList = new ArrayList<>();
+        fakeList.add(messageItem);
+        fakeList.add(new MessageItem(2, "dummy" + 2,
+                "dummy detail",1491567132,1491567132));
+        fakeList.add(new MessageItem(3, "dummy" + 3,
+                "dummy detail",1491567432,1491567432));
+        return fakeList;
+    }
+
     interface RetrofitService {
         @GET(API_URL)
         Observable<MessageItem[]> getAllMessages();

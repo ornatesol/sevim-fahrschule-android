@@ -5,16 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.fragments.MessagesListFragment.OnListFragmentInteractionListener;
-
 import com.fahrschule.sevim.models.MessageItem;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-public class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecyclerViewAdapter
+class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecyclerViewAdapter
         .ViewHolder> {
 
     private final List<MessageItem> values;
@@ -38,7 +38,7 @@ public class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecy
         final MessageItem messageItem = values.get(position);
         holder.title.setText(messageItem.getMessageTitle());
         holder.date.setText(
-                String.valueOf(messageItem.getUpdatedAtDate()));
+                messageItem.getUpdatedDateToDisplay());
 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,10 +57,24 @@ public class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecy
         return values.size();
     }
 
-    public void swapItems(List<MessageItem> newItems) {
+    void swapItems(List<MessageItem> newItems) {
         values.clear();
+        sortedByDate(newItems);
         values.addAll(newItems);
         notifyDataSetChanged();
+    }
+
+    /**
+     * Sorting by Descending Order
+     * @param messageItems
+     */
+    private void sortedByDate(final List<MessageItem> messageItems) {
+        Collections.sort(messageItems, new Comparator<MessageItem>() {
+            @Override
+            public int compare(MessageItem o1, MessageItem o2) {
+                return o2.getUpdatedDate().compareTo(o1.getUpdatedDate());
+            }
+        });
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

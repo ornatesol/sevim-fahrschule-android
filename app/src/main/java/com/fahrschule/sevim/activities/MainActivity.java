@@ -3,8 +3,6 @@ package com.fahrschule.sevim.activities;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -27,11 +25,6 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
 
     public static Intent newIntent(final Context context) {
         return new Intent(context, MainActivity.class);
-    }
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -62,10 +55,15 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
     }
 
     private void showMessagesContent() {
-        Fragment fragment = MessagesListFragment.newInstance();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content, fragment)
-                .commit();
+        if(!Utils.isOnline(this)) {
+            Utils.showConnectionErrorDialog(this, getString(R.string.error_no_connection));
+            selectDefaultNavDrawerItem();
+        } else {
+            Fragment fragment = MessagesListFragment.newInstance();
+            getSupportFragmentManager().beginTransaction().
+                    replace(R.id.content, fragment)
+                    .commit();
+        }
     }
 
     private void showOfficeTimingContent() {
@@ -75,9 +73,10 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
                 .commit();
     }
 
-    private void loadLearningSiteContent() {
+    private void showLearningSiteContent() {
         if(!Utils.isOnline(this)) {
             Utils.showConnectionErrorDialog(this, getString(R.string.error_no_connection));
+            selectDefaultNavDrawerItem();
         } else {
             showLernsiteDialog();
         }
@@ -104,7 +103,7 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
         if (menuItem != null) {
             switch (menuItem) {
                 case LEARNINGSITE:
-                    loadLearningSiteContent();
+                    showLearningSiteContent();
                     break;
                 case MESSAGES:
                     showMessagesContent();

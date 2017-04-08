@@ -22,6 +22,7 @@
 
   <!-- Generic App Specific Text -->
   <string name="ok">Ok</string>
+  <string name="loading">Laden...</string>
 
   <!-- BuroOffnung zeiten -->
   <string name="weekday_timings_label">Montag &#8211; Freitag</string>

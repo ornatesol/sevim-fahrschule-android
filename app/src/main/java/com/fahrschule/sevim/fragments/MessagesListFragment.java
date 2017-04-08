@@ -1,5 +1,6 @@
 package com.fahrschule.sevim.fragments;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import com.fahrschule.sevim.MainApplication;
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.models.MessageItem;
 import com.fahrschule.sevim.network.MessagesApi;
+import com.fahrschule.sevim.utils.Utils;
 import java.util.ArrayList;
 import javax.inject.Inject;
 import rx.Subscription;
@@ -42,6 +44,8 @@ public class MessagesListFragment extends BaseFragment {
     private ArrayList<MessageItem> messageList;
 
     MessageRecyclerViewAdapter adapter;
+
+    private Dialog progressDialog;
 
 
     /**
@@ -79,15 +83,18 @@ public class MessagesListFragment extends BaseFragment {
     }
 
     private void leadMessages() {
+        showProgress(true);
         loadMessagesSubscription = messagesApi.getAllMessages()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Action1<ArrayList<MessageItem>>() {
                             @Override public void call(ArrayList<MessageItem> messageItems) {
+                                showProgress(false);
                                 adapter.swapItems(messageItems);
                             }
                         }, new Action1<Throwable>() {
                                @Override public void call(Throwable throwable) {
+                                   showProgress(false);
                                    throwable.printStackTrace();
                                }
                            }
@@ -117,6 +124,18 @@ public class MessagesListFragment extends BaseFragment {
             loadMessagesSubscription.unsubscribe();
         }
         super.onDestroyView();
+    }
+
+    public void showProgress(boolean show) {
+        if (show) {
+            if (progressDialog == null) {
+                progressDialog = Utils.showProgressUpdateDialog(getActivity(),
+                        getString(R.string.loading));
+            }
+        } else if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
     }
 
     /**

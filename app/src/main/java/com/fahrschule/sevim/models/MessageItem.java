@@ -1,8 +1,23 @@
 package com.fahrschule.sevim.models;
 
+import com.fahrschule.sevim.utils.Utils;
 import com.google.gson.annotations.SerializedName;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class MessageItem {
+
+    public MessageItem(int id, String title, String detail, long created_at, long updated_at) {
+        this.id = id;
+        this.title = title;
+        this.detail = detail;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
+    }
 
     @SerializedName("id")
     private int id;
@@ -31,11 +46,13 @@ public class MessageItem {
         return detail;
     }
 
-    public long getCreatedAtDate() {
-        return created_at;
+    public Date getUpdatedDate() {
+        final Calendar createdAtDate = Calendar.getInstance(Locale.getDefault());
+        createdAtDate.setTimeInMillis(updated_at * 1000L);
+        return createdAtDate.getTime();
     }
 
-    public long getUpdatedAtDate() {
-        return updated_at;
+    public String getUpdatedDateToDisplay() {
+        return Utils.convertShortDateToString(getUpdatedDate());
     }
 }

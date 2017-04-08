@@ -79,7 +79,12 @@ public abstract class BaseActivity extends AppCompatActivity
             }
         });
     }
-    
+
+    public void selectDefaultNavDrawerItem() {
+        navigationView.setCheckedItem(R.id.nav_infos);
+        onNavigationItemSelected(navigationView.getMenu().getItem(2));
+    }
+
     private void setupToolbar() {
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
