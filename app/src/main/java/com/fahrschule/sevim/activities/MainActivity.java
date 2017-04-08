@@ -18,7 +18,7 @@ import com.fahrschule.sevim.fragments.OfficeLocationsFragment;
 import com.fahrschule.sevim.fragments.OfficeTimingsFragment;
 import com.fahrschule.sevim.fragments.SplashScreenFragment;
 import com.fahrschule.sevim.fragments.TheoriezeitenFragment;
-import com.fahrschule.sevim.models.MessageContent;
+import com.fahrschule.sevim.models.MessageItem;
 import com.fahrschule.sevim.models.NavigationMenuItem;
 import com.fahrschule.sevim.utils.Utils;
 
@@ -134,8 +134,8 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
     }
 
     @Override
-    public void onListFragmentInteraction(MessageContent.MessageItem item) {
-        Fragment fragment = MessageDetailFragment.newInstance(item.details);
+    public void onListFragmentInteraction(MessageItem item) {
+        Fragment fragment = MessageDetailFragment.newInstance(item.getMessageDetail());
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content, fragment)
                 .addToBackStack(null)

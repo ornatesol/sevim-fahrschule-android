@@ -10,8 +10,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.fragments.MessagesListFragment.OnListFragmentInteractionListener;
-import com.fahrschule.sevim.models.MessageContent.MessageItem;
 
+import com.fahrschule.sevim.models.MessageItem;
 import java.util.List;
 
 public class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecyclerViewAdapter
@@ -34,9 +34,11 @@ public class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecy
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.item = values.get(position);
-        holder.title.setText(values.get(position).title);
-        holder.timeStamp.setText(values.get(position).timestamp);
+
+        final MessageItem messageItem = values.get(position);
+        holder.title.setText(messageItem.getMessageTitle());
+        holder.date.setText(
+                String.valueOf(messageItem.getUpdatedAtDate()));
 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +46,7 @@ public class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecy
                 if (listener != null) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    listener.onListFragmentInteraction(holder.item);
+                    listener.onListFragmentInteraction(messageItem);
                 }
             }
         });
@@ -55,6 +57,12 @@ public class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecy
         return values.size();
     }
 
+    public void swapItems(List<MessageItem> newItems) {
+        values.clear();
+        values.addAll(newItems);
+        notifyDataSetChanged();
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         public final View view;
@@ -62,8 +70,8 @@ public class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecy
         @BindView(R.id.message_title)
         TextView title;
 
-        @BindView(R.id.message_timestamp)
-        TextView timeStamp;
+        @BindView(R.id.message_date)
+        TextView date;
 
         public MessageItem item;
 
@@ -74,7 +82,7 @@ public class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecy
         }
 
         @Override public String toString() {
-            return super.toString() + " '" + timeStamp.getText() + "'";
+            return super.toString() + " '" + date.getText() + "'";
         }
     }
 }

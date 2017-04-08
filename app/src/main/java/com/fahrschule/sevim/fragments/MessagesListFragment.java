@@ -2,15 +2,24 @@ package com.fahrschule.sevim.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import butterknife.BindView;
+import com.fahrschule.sevim.MainApplication;
 import com.fahrschule.sevim.R;
-import com.fahrschule.sevim.models.MessageContent;
-import com.fahrschule.sevim.models.MessageContent.MessageItem;
+import com.fahrschule.sevim.models.MessageItem;
+import com.fahrschule.sevim.network.MessagesApi;
+import java.util.ArrayList;
+import javax.inject.Inject;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 /**
  * A fragment representing a list of Items.
@@ -20,7 +29,20 @@ import com.fahrschule.sevim.models.MessageContent.MessageItem;
  */
 public class MessagesListFragment extends BaseFragment {
 
+    @BindView(R.id.rv_messages_list)
+    protected RecyclerView recyclerView;
+
+    @Inject
+    MessagesApi messagesApi;
+
     private OnListFragmentInteractionListener listener;
+
+    private Subscription loadMessagesSubscription;
+
+    private ArrayList<MessageItem> messageList;
+
+    MessageRecyclerViewAdapter adapter;
+
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -31,21 +53,45 @@ public class MessagesListFragment extends BaseFragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        MainApplication.get(getActivity()).component().inject(this);
+        messageList = new ArrayList<>();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_message_list, container, false);
+        return inflater.inflate(R.layout.fragment_message_list, container, false);
+    }
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),
-                    DividerItemDecoration.VERTICAL));
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-            recyclerView.setAdapter(new MessageRecyclerViewAdapter(MessageContent.ITEMS, listener));
-        }
-        return view;
+        Context context = view.getContext();
+        adapter = new MessageRecyclerViewAdapter(messageList, listener);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.addItemDecoration(new DividerItemDecoration(context,
+                DividerItemDecoration.VERTICAL));
+        recyclerView.setAdapter(adapter);
+        leadMessages();
+    }
+
+    private void leadMessages() {
+        loadMessagesSubscription = messagesApi.getAllMessages()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Action1<ArrayList<MessageItem>>() {
+                            @Override public void call(ArrayList<MessageItem> messageItems) {
+                                adapter.swapItems(messageItems);
+                            }
+                        }, new Action1<Throwable>() {
+                               @Override public void call(Throwable throwable) {
+                                   throwable.printStackTrace();
+                               }
+                           }
+                );
     }
 
     @Override
@@ -63,6 +109,14 @@ public class MessagesListFragment extends BaseFragment {
     public void onDetach() {
         super.onDetach();
         listener = null;
+    }
+
+    @Override
+    public void onDestroyView() {
+        if(loadMessagesSubscription != null && !loadMessagesSubscription.isUnsubscribed()) {
+            loadMessagesSubscription.unsubscribe();
+        }
+        super.onDestroyView();
     }
 
     /**
