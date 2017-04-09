@@ -9,8 +9,8 @@
       android:id="@+id/text_message_details"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:textSize="@dimen/text_size_16"
-      android:padding="@dimen/margin_8"
+      android:textSize="@dimen/text_size_20"
+      android:padding="@dimen/margin_16"
       />
 
 </FrameLayout>

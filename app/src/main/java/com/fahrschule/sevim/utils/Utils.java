@@ -1,6 +1,7 @@
 package com.fahrschule.sevim.utils;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
@@ -15,7 +16,11 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 import com.fahrschule.sevim.R;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Utils {
 
@@ -88,6 +93,16 @@ public class Utils {
     }
 
     /**
+     * Displaying Progress Dialog
+     * @param context
+     * @param message
+     * @return
+     */
+    public static Dialog showProgressUpdateDialog(Context context, String message) {
+        return ProgressDialog.show(context, "", message, true, false);
+    }
+
+    /**
      * Opens a particular coordinate on Google Maps app or in Browser and
      * displays marker on that spot along with label
      * @param context Context
@@ -137,5 +152,15 @@ public class Utils {
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
+    }
+
+    /**
+     * Convert Date to String and a particular format
+     * @param date
+     * @return
+     */
+    public static String convertShortDateToString(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+        return sdf.format(date); // Get Date String according to date format
     }
 }

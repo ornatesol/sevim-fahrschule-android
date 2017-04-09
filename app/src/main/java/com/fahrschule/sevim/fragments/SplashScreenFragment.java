@@ -40,9 +40,13 @@ public class SplashScreenFragment extends BaseFragment {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<Long>() {
-                    @Override
-                    public void call(Long aLong) {
+                    @Override public void call(Long aLong) {
                         launchMainFragment();
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        throwable.printStackTrace();
                     }
                 });
 
