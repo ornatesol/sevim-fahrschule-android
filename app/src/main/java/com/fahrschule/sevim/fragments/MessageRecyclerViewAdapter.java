@@ -1,5 +1,6 @@
 package com.fahrschule.sevim.fragments;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,25 @@ class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecyclerVie
                 }
             }
         });
+
+        holder.view.setBackgroundColor(Color.TRANSPARENT); //read state by default
+
+        holder.view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override
+            public void onViewAttachedToWindow(View v) {
+                if(listener != null ) {
+                    listener.onListItemStateChanged(v, messageItem);
+                }
+            }
+
+            @Override
+            public void onViewDetachedFromWindow(View v) {
+
+            }
+        });
+
+
+
     }
 
     @Override

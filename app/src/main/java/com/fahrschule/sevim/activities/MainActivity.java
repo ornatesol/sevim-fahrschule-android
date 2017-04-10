@@ -3,11 +3,16 @@ package com.fahrschule.sevim.activities;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioGroup;
+import com.fahrschule.sevim.MainApplication;
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.fragments.InfoFragment;
 import com.fahrschule.sevim.fragments.MessageDetailFragment;
@@ -18,13 +23,27 @@ import com.fahrschule.sevim.fragments.SplashScreenFragment;
 import com.fahrschule.sevim.fragments.TheoriezeitenFragment;
 import com.fahrschule.sevim.models.MessageItem;
 import com.fahrschule.sevim.models.NavigationMenuItem;
+import com.fahrschule.sevim.network.MessagesApi;
 import com.fahrschule.sevim.utils.Utils;
+import javax.inject.Inject;
+import org.json.JSONArray;
+import rx.Observable;
 
 public class MainActivity extends BaseActivity implements BaseActivity.NavItemActionTargetListener,
         MessagesListFragment.OnListFragmentInteractionListener {
 
+    @Inject
+    MessagesApi messagesApi;
+
     public static Intent newIntent(final Context context) {
         return new Intent(context, MainActivity.class);
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        MainApplication.get(this).component().inject(this);
+
     }
 
     @Override
@@ -134,11 +153,77 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
 
     @Override
     public void onListFragmentInteraction(MessageItem item) {
+        boolean alreadyEntered = false;
+        try {
+            JSONArray sharedPrefList = new JSONArray(
+                    sharedPref.getString(getString(R.string.sharedpref_message_id), "[]"));
+            for(int i=0; i<sharedPrefList.length(); i++) {
+                if(sharedPrefList.getInt(i) == item.getId()) {
+                    alreadyEntered = true;
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if(!alreadyEntered) {
+            //Storing in preferences to mark as read
+            SharedPreferences.Editor editor = sharedPref.edit();
+            messageReadStatusMap.put(item.getId());
+            editor.putString(getString(R.string.sharedpref_message_id), messageReadStatusMap.toString());
+            editor.apply();
+        }
+
+        //Opening Message Detail Fragment to display Message Content
         Fragment fragment = MessageDetailFragment.newInstance(item.getMessageDetail());
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void onListItemStateChanged(View view, MessageItem messageItem) {
+        if(view != null) {
+            try {
+                JSONArray sharedPrefList = new JSONArray(
+                        sharedPref.getString(getString(R.string.sharedpref_message_id), "[]"));
+                //int size = Observable.just(messagesApi.getAllMessages())
+                //        .toList()
+                //        .toBlocking()
+                //        .single()
+                //        .size();
+
+                int size = 3; //TODO remove it
+
+                //Ensuring there are still any unread/new messages
+                if(sharedPrefList.length() < size) {
+                    if (sharedPrefList.length() > 0) {
+                        boolean readAlready = true;
+                        for (int i = 0; i < sharedPrefList.length(); i++) {
+                            long id = sharedPrefList.getInt(i);
+                            if (messageItem.getId() != id) {
+                                readAlready = false;
+                            } else {
+                                readAlready = true;
+                                break;
+                            }
+                        }
+
+                        if (!readAlready) {
+                            //means not clicked already , hence unread
+                            view.setBackgroundColor(Color.LTGRAY);
+                        }
+                    } else {
+                        //default/fresh state
+                        view.setBackgroundColor(Color.LTGRAY);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void showLernsiteDialog() {

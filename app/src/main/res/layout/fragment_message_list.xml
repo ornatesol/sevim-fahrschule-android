@@ -7,8 +7,6 @@
     android:name="com.fahrschule.sevim.fragments.MessagesListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="@dimen/margin_16"
-    android:layout_marginEnd="@dimen/margin_16"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.fahrschule.sevim.fragments.MessagesListFragment"
     tools:listitem="@layout/fragment_message"

@@ -3,7 +3,6 @@ package com.fahrschule.sevim.network;
 import android.support.annotation.NonNull;
 import com.fahrschule.sevim.models.MessageItem;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.inject.Inject;
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
@@ -35,7 +34,8 @@ public class RetrofitMessagesApi implements MessagesApi {
                         if(messageItems == null) {
                             return new ArrayList<>();
                         }
-                        return new ArrayList<>(Arrays.asList(messageItems));
+                        //return new ArrayList<>(Arrays.asList(messageItems));
+                        return getMessageItemsFake(messageItems[0]); //TODO Remove it
                     }
                 })
                 .doOnError(new Action1<Throwable>() {
@@ -51,10 +51,10 @@ public class RetrofitMessagesApi implements MessagesApi {
         //used this tool http://www.onlineconversion.com/unix_time.htm
         ArrayList<MessageItem> fakeList = new ArrayList<>();
         fakeList.add(messageItem);
-        fakeList.add(new MessageItem(2, "dummy" + 2,
-                "dummy detail",1491567132,1491567132));
-        fakeList.add(new MessageItem(3, "dummy" + 3,
-                "dummy detail",1491567432,1491567432));
+        fakeList.add(new MessageItem(1, "Offer " + 1,
+                "Details for Offer " + 1,1491624244,1491624244));
+        fakeList.add(new MessageItem(2, "Offer " + 2,
+                "Details for Offer " + 2,1491567432,1491567432));
         return fakeList;
     }
 

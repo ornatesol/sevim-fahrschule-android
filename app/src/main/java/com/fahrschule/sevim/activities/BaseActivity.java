@@ -1,7 +1,9 @@
 package com.fahrschule.sevim.activities;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -15,6 +17,7 @@ import android.view.View;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.fahrschule.sevim.R;
+import org.json.JSONArray;
 
 public abstract class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -30,7 +33,11 @@ public abstract class BaseActivity extends AppCompatActivity
 
     private NavItemActionTargetListener listener;
 
-    ActionBarDrawerToggle toggle;
+    private ActionBarDrawerToggle toggle;
+
+    protected SharedPreferences sharedPref;
+
+    protected JSONArray messageReadStatusMap;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,9 +49,15 @@ public abstract class BaseActivity extends AppCompatActivity
         setupDrawer();
         setupNavigationView();
         registerOnBackStackListener();
+        setupSharedPrefs();
         if (savedInstanceState == null) {
             showDefaultFragment();
         }
+    }
+
+    private void setupSharedPrefs() {
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        messageReadStatusMap = new JSONArray();
     }
 
     @Override

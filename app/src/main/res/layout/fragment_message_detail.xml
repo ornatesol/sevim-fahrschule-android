@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fahrschule.sevim.fragments.MessageDetailFragment"
-    >
+    tools:context="com.fahrschule.sevim.fragments.MessageDetailFragment">
 
   <TextView
       android:id="@+id/text_message_details"
@@ -11,6 +10,6 @@
       android:layout_height="match_parent"
       android:textSize="@dimen/text_size_20"
       android:padding="@dimen/margin_16"
-      />
+      android:textStyle="bold"/>
 
 </FrameLayout>

@@ -88,12 +88,14 @@ public class MessagesListFragment extends BaseFragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Action1<ArrayList<MessageItem>>() {
-                            @Override public void call(ArrayList<MessageItem> messageItems) {
+                            @Override
+                            public void call(ArrayList<MessageItem> messageItems) {
                                 showProgress(false);
                                 adapter.swapItems(messageItems);
                             }
                         }, new Action1<Throwable>() {
-                               @Override public void call(Throwable throwable) {
+                               @Override
+                               public void call(Throwable throwable) {
                                    showProgress(false);
                                    throwable.printStackTrace();
                                }
@@ -150,5 +152,6 @@ public class MessagesListFragment extends BaseFragment {
      */
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(MessageItem item);
+        void onListItemStateChanged(View view, MessageItem item);
     }
 }
