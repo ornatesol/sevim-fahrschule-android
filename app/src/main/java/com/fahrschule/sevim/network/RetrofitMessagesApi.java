@@ -3,6 +3,7 @@ package com.fahrschule.sevim.network;
 import android.support.annotation.NonNull;
 import com.fahrschule.sevim.models.MessageItem;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.inject.Inject;
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
@@ -34,8 +35,8 @@ public class RetrofitMessagesApi implements MessagesApi {
                         if(messageItems == null) {
                             return new ArrayList<>();
                         }
-                        //return new ArrayList<>(Arrays.asList(messageItems));
-                        return getMessageItemsFake(messageItems[0]); //TODO Remove it
+                        return new ArrayList<>(Arrays.asList(messageItems));
+                        //return getMessageItemsFake(messageItems[0]); //TODO Remove it
                     }
                 })
                 .doOnError(new Action1<Throwable>() {

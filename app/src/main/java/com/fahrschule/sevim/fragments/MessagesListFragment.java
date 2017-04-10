@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -79,10 +81,18 @@ public class MessagesListFragment extends BaseFragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(context,
                 DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
-        leadMessages();
+        loadMessages();
+        setActionbarTitle();
     }
 
-    private void leadMessages() {
+    private void setActionbarTitle() {
+        final ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.messages);
+        }
+    }
+
+    private void loadMessages() {
         showProgress(true);
         loadMessagesSubscription = messagesApi.getAllMessages()
                 .observeOn(AndroidSchedulers.mainThread())

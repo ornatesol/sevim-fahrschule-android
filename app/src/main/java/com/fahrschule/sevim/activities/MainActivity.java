@@ -175,6 +175,9 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
             editor.apply();
         }
 
+        //Update Actionbar Title
+        toolbar.setTitle(item.getMessageTitle());
+
         //Opening Message Detail Fragment to display Message Content
         Fragment fragment = MessageDetailFragment.newInstance(item.getMessageDetail());
         getSupportFragmentManager().beginTransaction()
@@ -189,13 +192,11 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
             try {
                 JSONArray sharedPrefList = new JSONArray(
                         sharedPref.getString(getString(R.string.sharedpref_message_id), "[]"));
-                //int size = Observable.just(messagesApi.getAllMessages())
-                //        .toList()
-                //        .toBlocking()
-                //        .single()
-                //        .size();
-
-                int size = 3; //TODO remove it
+                int size = Observable.just(messagesApi.getAllMessages())
+                        .toList()
+                        .toBlocking()
+                        .single()
+                        .size();
 
                 //Ensuring there are still any unread/new messages
                 if(sharedPrefList.length() < size) {
