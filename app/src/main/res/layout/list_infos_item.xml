@@ -20,6 +20,7 @@
       android:layout_toEndOf="@id/list_item_infos_icon"
       tools:text="Automatic"
       android:textSize="@dimen/text_size_16"
+      android:textColor="@color/black"
       android:gravity="center_vertical|start"
       android:layout_marginStart="@dimen/margin_16"/>
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import com.fahrschule.sevim.MainApplication;
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.fragments.InfoFragment;
@@ -28,6 +28,8 @@ import com.fahrschule.sevim.utils.Utils;
 import javax.inject.Inject;
 import org.json.JSONArray;
 import rx.Observable;
+
+import static android.graphics.Typeface.BOLD;
 
 public class MainActivity extends BaseActivity implements BaseActivity.NavItemActionTargetListener,
         MessagesListFragment.OnListFragmentInteractionListener {
@@ -214,11 +216,14 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
 
                         if (!readAlready) {
                             //means not clicked already , hence unread
-                            view.setBackgroundColor(Color.LTGRAY);
+                            TextView tv = (TextView) view;
+                            tv.setTypeface(null, BOLD);
+
                         }
                     } else {
                         //default/fresh state
-                        view.setBackgroundColor(Color.LTGRAY);
+                        TextView tv = (TextView) view;
+                        tv.setTypeface(null, BOLD);
                     }
                 }
             } catch (Exception e) {

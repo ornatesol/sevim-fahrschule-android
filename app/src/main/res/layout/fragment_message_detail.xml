@@ -9,7 +9,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:textSize="@dimen/text_size_20"
-      android:padding="@dimen/margin_16"
-      android:textStyle="bold"/>
+      android:textColor="@color/black"
+      android:padding="@dimen/margin_16"/>
 
 </FrameLayout>

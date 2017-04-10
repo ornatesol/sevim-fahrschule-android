@@ -1,6 +1,6 @@
 package com.fahrschule.sevim.fragments;
 
-import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,9 +52,9 @@ class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecyclerVie
             }
         });
 
-        holder.view.setBackgroundColor(Color.TRANSPARENT); //read state by default
+        holder.title.setTypeface(null, Typeface.NORMAL); //read state by default
 
-        holder.view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+        holder.title.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
             @Override
             public void onViewAttachedToWindow(View v) {
                 if(listener != null ) {
@@ -67,8 +67,6 @@ class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageRecyclerVie
 
             }
         });
-
-
 
     }
 
