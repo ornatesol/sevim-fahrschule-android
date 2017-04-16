@@ -15,6 +15,10 @@
         android:icon="@drawable/ic_infos"
         android:title="@string/infos" />
     <item
+        android:id="@+id/nav_services"
+        android:icon="@drawable/ic_services"
+        android:title="@string/services" />
+    <item
         android:id="@+id/nav_theory_calendar"
         android:icon="@drawable/ic_theoriezeiten"
         android:title="@string/theory_calendar" />

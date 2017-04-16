@@ -10,6 +10,7 @@ public enum NavigationMenuItem {
     LEARNINGSITE(R.string.learning_site),
     MESSAGES(R.string.messages),
     INFOS(R.string.infos),
+    SERVICES(R.string.services),
     THEORYCALENDAR(R.string.theory_calendar),
     LOCATIONS(R.string.locations),
     OFFICETIMING(R.string.office_timing);

@@ -23,7 +23,7 @@
   <dimen name="fab_margin">16dp</dimen>
 
   <!-- custom dimensions -->
-  <dimen name="infos_list_item_size">40dp</dimen>
+  <dimen name="services_list_item_size">40dp</dimen>
 
 </resources>
 

@@ -5,7 +5,7 @@ import android.support.annotation.StringRes;
 import com.fahrschule.sevim.R;
 import java.util.ArrayList;
 
-public enum InfoItemsSource {
+public enum ServicesItemsSource {
 
     SCHALTUNG(R.string.schaltung, R.drawable.schaltung),
     FAHRLEHRER(R.string.fahrlehrer, R.drawable.fahrlehrer),
@@ -35,14 +35,14 @@ public enum InfoItemsSource {
     @DrawableRes
     public final int drawableResId;
 
-    InfoItemsSource(int textResId, int drawableResId) {
+    ServicesItemsSource(int textResId, int drawableResId) {
         this.textResId = textResId;
         this.drawableResId = drawableResId;
     }
 
-    public static ArrayList<InfoItemsSource> getInfoItems() {
-        ArrayList<InfoItemsSource> arrayList = new ArrayList<>();
-        for(InfoItemsSource item: values()) {
+    public static ArrayList<ServicesItemsSource> getInfoItems() {
+        ArrayList<ServicesItemsSource> arrayList = new ArrayList<>();
+        for(ServicesItemsSource item: values()) {
             arrayList.add(item);
         }
         return arrayList;

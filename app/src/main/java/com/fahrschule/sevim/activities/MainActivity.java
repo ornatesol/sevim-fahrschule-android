@@ -14,11 +14,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import com.fahrschule.sevim.MainApplication;
 import com.fahrschule.sevim.R;
-import com.fahrschule.sevim.fragments.InfoFragment;
+import com.fahrschule.sevim.fragments.ServicesFragment;
 import com.fahrschule.sevim.fragments.MessageDetailFragment;
 import com.fahrschule.sevim.fragments.MessagesListFragment;
 import com.fahrschule.sevim.fragments.OfficeLocationsFragment;
 import com.fahrschule.sevim.fragments.OfficeTimingsFragment;
+import com.fahrschule.sevim.fragments.InfoFragment;
 import com.fahrschule.sevim.fragments.SplashScreenFragment;
 import com.fahrschule.sevim.fragments.TheoriezeitenFragment;
 import com.fahrschule.sevim.models.MessageItem;
@@ -117,6 +118,13 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
                 .commit();
     }
 
+    private void showServicesContent() {
+        Fragment fragment = ServicesFragment.newInstance();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, fragment)
+                .commit();
+    }
+
     @Override
     public void handleSelection(String selectedMenu) {
 
@@ -133,6 +141,10 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
                 case INFOS:
                     showInfosContent();
                     toolbar.setTitle(R.string.infos);
+                    break;
+                case SERVICES:
+                    showServicesContent();
+                    toolbar.setTitle(R.string.services);
                     break;
                 case THEORYCALENDAR:
                     showTheoryCalendarContent();

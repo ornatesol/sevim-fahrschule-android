@@ -29,10 +29,10 @@ public abstract class BaseFragment extends Fragment {
     public void showDefaultContent() {
         final ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         if (actionBar != null) {
-           actionBar.setTitle(R.string.infos);
+           actionBar.setTitle(R.string.services);
         }
 
-        Fragment fragment = InfoFragment.newInstance();
+        Fragment fragment = ServicesFragment.newInstance();
         getFragmentManager().beginTransaction()
                 .replace(R.id.content, fragment)
                 .commit();

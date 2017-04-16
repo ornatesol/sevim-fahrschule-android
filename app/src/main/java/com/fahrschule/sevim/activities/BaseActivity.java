@@ -121,6 +121,9 @@ public abstract class BaseActivity extends AppCompatActivity
             case R.id.nav_infos:
                 listener.handleSelection(getString(R.string.infos));
                 break;
+            case R.id.nav_services:
+                listener.handleSelection(getString(R.string.services));
+                break;
             case R.id.nav_locations:
                 listener.handleSelection(getString(R.string.locations));
                 break;

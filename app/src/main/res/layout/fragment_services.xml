@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fahrschule.sevim.fragments.InfoFragment">
+    tools:context="com.fahrschule.sevim.fragments.ServicesFragment">
   
   <ListView
       android:id="@+id/info_sources_list_view"

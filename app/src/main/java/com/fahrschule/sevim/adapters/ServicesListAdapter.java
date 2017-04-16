@@ -11,18 +11,18 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.fahrschule.sevim.R;
-import com.fahrschule.sevim.models.InfoItemsSource;
+import com.fahrschule.sevim.models.ServicesItemsSource;
 import java.util.List;
 
-public class InfoListAdapter extends BaseAdapter {
+public class ServicesListAdapter extends BaseAdapter {
 
-    private final List<InfoItemsSource> items;
+    private final List<ServicesItemsSource> items;
 
     private Context context;
 
     private final LayoutInflater inflater;
 
-    public InfoListAdapter(List<InfoItemsSource> items, Context context) {
+    public ServicesListAdapter(List<ServicesItemsSource> items, Context context) {
         this.items = items;
         this.context = context;
         inflater = LayoutInflater.from(context);
@@ -43,26 +43,26 @@ public class InfoListAdapter extends BaseAdapter {
     @Override public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.list_infos_item, parent, false);
+            convertView = inflater.inflate(R.layout.list_services_item, parent, false);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        final InfoItemsSource infoItem = items.get(position);
-        holder.icon.setBackground(ContextCompat.getDrawable(context, infoItem.drawableResId));
-        holder.title.setText(context.getString(infoItem.textResId));
+        final ServicesItemsSource servicesItem = items.get(position);
+        holder.icon.setBackground(ContextCompat.getDrawable(context, servicesItem.drawableResId));
+        holder.title.setText(context.getString(servicesItem.textResId));
 
         return convertView;
     }
 
     class ViewHolder {
 
-        @BindView(R.id.list_item_infos_icon)
+        @BindView(R.id.list_item_services_icon)
         ImageView icon;
 
-        @BindView(R.id.list_item_infos_text)
+        @BindView(R.id.list_item_services_text)
         TextView title;
 
         ViewHolder(View view) {

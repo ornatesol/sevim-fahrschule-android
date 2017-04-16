@@ -8,9 +8,9 @@
 
   <ImageView
       android:id="@+id/imageView"
-      android:layout_width="@dimen/nav_header_height"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="@drawable/drawer_banner"
+      android:background="@drawable/ic_app_logo"
       android:scaleType="center"
       android:padding="@dimen/margin_8"
       android:layout_gravity="center"/>
