@@ -78,12 +78,28 @@
   <string name="reinickendorf_mobile">Mobil: 0178 &#8211; 149 55 59</string>
   <string name="reinickendorf_email">Email: post@fahrschule-sevim.de</string>
 
-  <string name="sending_email_message">Zuschicken E-Mail...</string>
+  <string name="sending_email_message">Zuschicken E-Mail &#8230;</string>
 
   <!-- Theoriezeiten -->
   <string name="german">Deutsch</string>
   <string name="english">English</string>
   <string name="turkish">Türkisch</string>
+
+  <!-- Leistung -->
+  <string name="leistung_achtung_title">ACHTUNG!</string>
+  <string name="leistung_achtung_content">
+    Liebe Schüler,\n
+    wenn die eingeplanten\n
+    Fahrstunden nicht eingehalten\n
+    oder 2 Werktage vorher nicht\n
+    abgesagt werden, wird 70%\n
+  der Fahrstunde angerechnet!</string>
+  <string name="leistung_info_subtitle">INFO!</string>
+  <string name="leistung_info_content">
+    Fahrstunden bitte rechtzeitig,\n
+    Mindestens 3 Wochen\n
+    vorher planen!
+  </string>
 
 
 </resources>
