@@ -1,6 +1,5 @@
 package com.fahrschule.sevim.activities;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,12 +13,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import com.fahrschule.sevim.MainApplication;
 import com.fahrschule.sevim.R;
-import com.fahrschule.sevim.fragments.ServicesFragment;
+import com.fahrschule.sevim.fragments.InfoFragment;
 import com.fahrschule.sevim.fragments.MessageDetailFragment;
 import com.fahrschule.sevim.fragments.MessagesListFragment;
 import com.fahrschule.sevim.fragments.OfficeLocationsFragment;
 import com.fahrschule.sevim.fragments.OfficeTimingsFragment;
-import com.fahrschule.sevim.fragments.InfoFragment;
+import com.fahrschule.sevim.fragments.ServicesFragment;
 import com.fahrschule.sevim.fragments.SplashScreenFragment;
 import com.fahrschule.sevim.fragments.TheoriezeitenFragment;
 import com.fahrschule.sevim.models.MessageItem;
@@ -28,7 +27,7 @@ import com.fahrschule.sevim.network.MessagesApi;
 import com.fahrschule.sevim.utils.Utils;
 import javax.inject.Inject;
 import org.json.JSONArray;
-import rx.Observable;
+import org.json.JSONException;
 
 import static android.graphics.Typeface.BOLD;
 
@@ -37,10 +36,6 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
 
     @Inject
     MessagesApi messagesApi;
-
-    public static Intent newIntent(final Context context) {
-        return new Intent(context, MainActivity.class);
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -166,7 +161,7 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
     }
 
     @Override
-    public void onListFragmentInteraction(MessageItem item) {
+    public void onListItemClicked(MessageItem item) {
         boolean alreadyEntered = false;
         try {
             JSONArray sharedPrefList = new JSONArray(
@@ -182,11 +177,23 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
         }
 
         if(!alreadyEntered) {
-            //Storing in preferences to mark as read
-            SharedPreferences.Editor editor = sharedPref.edit();
-            messageReadStatusMap.put(item.getId());
-            editor.putString(getString(R.string.sharedpref_message_id), messageReadStatusMap.toString());
-            editor.apply();
+            JSONArray currentPrefList = null;
+            try {
+                //to fetch the currently existing list
+                currentPrefList = new JSONArray(
+                        sharedPref.getString(getString(R.string.sharedpref_message_id), "[]"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if(currentPrefList != null) {
+                //Storing in preferences to mark as read
+                SharedPreferences.Editor editor = sharedPref.edit();
+                currentPrefList.put(item.getId()); //appending to existing record
+                editor.putString(getString(R.string.sharedpref_message_id),
+                        currentPrefList.toString());
+                editor.apply();
+            }
         }
 
         //Update Actionbar Title
@@ -201,42 +208,34 @@ public class MainActivity extends BaseActivity implements BaseActivity.NavItemAc
     }
 
     @Override
-    public void onListItemStateChanged(View view, MessageItem messageItem) {
+    public void onListItemLoaded(View view, MessageItem messageItem) {
         if(view != null) {
             try {
                 JSONArray sharedPrefList = new JSONArray(
                         sharedPref.getString(getString(R.string.sharedpref_message_id), "[]"));
-                int size = Observable.just(messagesApi.getAllMessages())
-                        .toList()
-                        .toBlocking()
-                        .single()
-                        .size();
 
-                //Ensuring there are still any unread/new messages
-                if(sharedPrefList.length() < size) {
-                    if (sharedPrefList.length() > 0) {
-                        boolean readAlready = true;
-                        for (int i = 0; i < sharedPrefList.length(); i++) {
-                            long id = sharedPrefList.getInt(i);
-                            if (messageItem.getId() != id) {
-                                readAlready = false;
-                            } else {
-                                readAlready = true;
-                                break;
-                            }
+                if (sharedPrefList.length() > 0) {
+                    boolean readAlready = true;
+                    for (int i = 0; i < sharedPrefList.length(); i++) {
+                        long id = sharedPrefList.getInt(i);
+                        if (messageItem.getId() != id) {
+                            readAlready = false;
+                        } else {
+                            readAlready = true;
+                            break;
                         }
+                    }
 
-                        if (!readAlready) {
-                            //means not clicked already , hence unread
-                            TextView tv = (TextView) view;
-                            tv.setTypeface(null, BOLD);
-
-                        }
-                    } else {
-                        //default/fresh state
+                    if (!readAlready) {
+                        //means not clicked already , hence unread
                         TextView tv = (TextView) view;
                         tv.setTypeface(null, BOLD);
+
                     }
+                } else {
+                    //default/fresh state
+                    TextView tv = (TextView) view;
+                    tv.setTypeface(null, BOLD);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

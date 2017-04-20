@@ -161,7 +161,7 @@ public class MessagesListFragment extends BaseFragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(MessageItem item);
-        void onListItemStateChanged(View view, MessageItem item);
+        void onListItemClicked(MessageItem item);
+        void onListItemLoaded(View view, MessageItem item);
     }
 }
