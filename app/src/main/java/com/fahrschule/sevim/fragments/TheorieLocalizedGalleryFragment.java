@@ -86,12 +86,6 @@ public class TheorieLocalizedGalleryFragment extends BaseFragment {
                 }
                 break;
 
-            case EN:
-                for (int i = 0; i < TheorieImageItemSource.getEnglishPlanList().size(); i++) {
-                    photoContent.createAddItem(TheorieImageItemSource.getEnglishPlanList().get(i));
-                }
-                break;
-
             case TR:
                 for (int i = 0; i < TheorieImageItemSource.getTurkishPlanList().size(); i++) {
                     photoContent.createAddItem(TheorieImageItemSource.getTurkishPlanList().get(i));

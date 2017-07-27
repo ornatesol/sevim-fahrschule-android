@@ -6,9 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import butterknife.BindView;
-import butterknife.OnClick;
+
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.models.TheorieImageItemSource;
 import com.fahrschule.sevim.utils.Utils;
@@ -16,10 +14,13 @@ import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
+import butterknife.BindView;
+import butterknife.OnClick;
+
 public class TheoriezeitenFragment extends BaseFragment {
 
     enum SUPPORTED_LANGUAGES {
-        DE, EN, TR; //TODO make it dynamic based on urls in text file
+        DE, TR; //TODO make it dynamic based on urls in text file
 
         static SUPPORTED_LANGUAGES from(String name) {
             for(SUPPORTED_LANGUAGES item: values()) {
@@ -31,8 +32,11 @@ public class TheoriezeitenFragment extends BaseFragment {
         }
     }
 
-    @BindView(R.id.main_plan)
-    PhotoView mainTheoriePlan;
+    @BindView(R.id.imageview_wedding)
+    PhotoView weddingTheoryPlanImage;
+
+    @BindView(R.id.imageview_reinickendorf)
+    PhotoView reinickendorfTheoryPlanImage;
 
     public static TheoriezeitenFragment newInstance() {
         return new TheoriezeitenFragment();
@@ -48,11 +52,11 @@ public class TheoriezeitenFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if(Utils.isOnline(getActivity())) {
-            loadMainPlanImageFromNetwork();
+            loadTheoryPlanImageFromNetwork();
         } else {
             Utils.showConnectionErrorDialog(getActivity(),
                     getString(R.string.error_no_connection_data_is_old));
-            loadMainPlanImageFromCache();
+            loadTheoryPlanImageFromCache();
         }
     }
 
@@ -64,35 +68,43 @@ public class TheoriezeitenFragment extends BaseFragment {
             // This ensures that the anonymous callback we have does not prevent the activity from
             // being garbage collected. It also prevents our callback from getting invoked even after the
             // activity has finished.
-            Picasso.with(getActivity()).cancelRequest(mainTheoriePlan);
+            Picasso.with(getActivity()).cancelRequest(weddingTheoryPlanImage);
         }
     }
 
-    private void loadMainPlanImageFromNetwork() {
+    private void loadTheoryPlanImageFromNetwork() {
         Picasso.with(getActivity())
-                .load(TheorieImageItemSource.getMainPlan())
+                .load(TheorieImageItemSource.getPlanForWedding())
                 .error(R.string.error_generic)
                 .noFade()
                 .networkPolicy(NetworkPolicy.NO_CACHE)
-                .into(mainTheoriePlan);
+                .into(weddingTheoryPlanImage);
+
+        Picasso.with(getActivity())
+                .load(TheorieImageItemSource.getPlanForReinickendorf())
+                .error(R.string.error_generic)
+                .noFade()
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .into(reinickendorfTheoryPlanImage);
     }
 
-    private void loadMainPlanImageFromCache() {
+    private void loadTheoryPlanImageFromCache() {
         Picasso.with(getActivity())
-                .load(TheorieImageItemSource.getMainPlan())
+                .load(TheorieImageItemSource.getPlanForWedding())
                 .noFade()
                 .error(R.string.error_generic)
-                .into(mainTheoriePlan);
+                .into(weddingTheoryPlanImage);
+
+        Picasso.with(getActivity())
+                .load(TheorieImageItemSource.getPlanForReinickendorf())
+                .noFade()
+                .error(R.string.error_generic)
+                .into(reinickendorfTheoryPlanImage);
     }
 
     @OnClick(R.id.show_german_plan)
     protected void showGermanPlan() {
         launchTheoriPlanPerLanguage(SUPPORTED_LANGUAGES.DE.name());
-    }
-
-    @OnClick(R.id.show_english_plan)
-    protected void showEnglishPlan() {
-        launchTheoriPlanPerLanguage(SUPPORTED_LANGUAGES.EN.name());
     }
 
     @OnClick(R.id.show_turkish_plan)

@@ -11,7 +11,7 @@
   <string name="services">Leistungen</string>
   <string name="locations">Standorte</string>
   <string name="office_timing">Bürozeiten</string>
-  <string name="theory_calendar">Theoriezeiten</string>
+  <string name="theory_calendar">Theorieunterricht</string>
   <string name="contact">Kontakt</string>
 
   <!-- Error Messages -->
