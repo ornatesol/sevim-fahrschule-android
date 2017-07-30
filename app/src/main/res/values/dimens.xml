@@ -25,6 +25,7 @@
 
   <!-- custom dimensions -->
   <dimen name="services_list_item_size">40dp</dimen>
+  <dimen name="theorieunterricht_image_height">200dp</dimen>
 
 </resources>
 

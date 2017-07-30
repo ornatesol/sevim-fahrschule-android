@@ -7,19 +7,19 @@
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:orientation="vertical">
+      android:orientation="vertical"
+      android:layout_margin="@dimen/margin_16">
 
     <LinearLayout
         android:id="@+id/layout_wedding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/margin_16">
+        android:orientation="vertical">
 
       <com.github.chrisbanes.photoview.PhotoView
           android:id="@+id/imageview_wedding"
           android:layout_width="match_parent"
-          android:layout_height="300dp"
+          android:layout_height="@dimen/theorieunterricht_image_height"
           tools:src="@drawable/theory_main_image"/>
 
       <LinearLayout
@@ -27,7 +27,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal"
-          android:layout_marginTop="@dimen/margin_16">
+          android:layout_marginTop="@dimen/margin_8">
 
         <Button
             android:id="@+id/button_german_wedding"
@@ -58,13 +58,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/margin_16"
-        android:layout_margin="@dimen/margin_16">
+        android:layout_marginTop="@dimen/margin_8">
 
       <com.github.chrisbanes.photoview.PhotoView
           android:id="@+id/imageview_reinickendorf"
           android:layout_width="match_parent"
-          android:layout_height="300dp"
+          android:layout_height="@dimen/theorieunterricht_image_height"
           tools:src="@drawable/theory_main_image"/>
 
       <LinearLayout
@@ -72,7 +71,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal"
-          android:layout_marginTop="@dimen/margin_16">
+          android:layout_marginTop="@dimen/margin_8">
 
         <Button
             android:id="@+id/button_german_reinickendorf"
