@@ -5,89 +5,96 @@
     tools:context="com.fahrschule.sevim.fragments.TheoriezeitenFragment">
 
   <LinearLayout
-      android:id="@+id/layout_wedding"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:layout_margin="@dimen/margin_16">
-
-    <com.github.chrisbanes.photoview.PhotoView
-        android:id="@+id/imageview_wedding"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        tools:src="@drawable/theory_main_image"/>
+      android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/buttons_wedding"
+        android:id="@+id/layout_wedding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/margin_16">
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_16">
 
-      <Button
-          android:id="@+id/button_german_wedding"
-          android:layout_weight="0.5"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:gravity="center"
-          android:textSize="@dimen/text_size_20"
-          android:textColor="@color/colorAccent"
-          android:text="@string/german"/>
+      <com.github.chrisbanes.photoview.PhotoView
+          android:id="@+id/imageview_wedding"
+          android:layout_width="match_parent"
+          android:layout_height="300dp"
+          tools:src="@drawable/theory_main_image"/>
 
-      <Button
-          android:id="@+id/button_turkish_wedding"
-          android:gravity="center"
-          android:layout_weight="0.5"
-          android:layout_width="0dp"
+      <LinearLayout
+          android:id="@+id/buttons_wedding"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:textSize="@dimen/text_size_20"
-          android:textColor="@color/colorAccent"
-          android:text="@string/turkish"/>
+          android:orientation="horizontal"
+          android:layout_marginTop="@dimen/margin_16">
+
+        <Button
+            android:id="@+id/button_german_wedding"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_20"
+            android:textColor="@color/colorAccent"
+            android:text="@string/german"/>
+
+        <Button
+            android:id="@+id/button_turkish_wedding"
+            android:gravity="center"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_20"
+            android:textColor="@color/colorAccent"
+            android:text="@string/turkish"/>
+
+      </LinearLayout>
 
     </LinearLayout>
 
-  </LinearLayout>
-
-  <LinearLayout
-      android:id="@+id/layout_reinickendorf"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:layout_marginTop="@dimen/margin_16"
-      android:layout_margin="@dimen/margin_16">
-
-    <com.github.chrisbanes.photoview.PhotoView
-        android:id="@+id/imageview_reinickendorf"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        tools:src="@drawable/theory_main_image"/>
-
     <LinearLayout
-        android:id="@+id/buttons_reinickendorf"
+        android:id="@+id/layout_reinickendorf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/margin_16">
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_margin="@dimen/margin_16">
 
-      <Button
-          android:id="@+id/button_german_reinickendorf"
-          android:layout_weight="0.5"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:gravity="center"
-          android:textSize="@dimen/text_size_20"
-          android:textColor="@color/colorAccent"
-          android:text="@string/german"/>
+      <com.github.chrisbanes.photoview.PhotoView
+          android:id="@+id/imageview_reinickendorf"
+          android:layout_width="match_parent"
+          android:layout_height="300dp"
+          tools:src="@drawable/theory_main_image"/>
 
-      <Button
-          android:id="@+id/button_turkish_reinickendorf"
-          android:gravity="center"
-          android:layout_weight="0.5"
-          android:layout_width="0dp"
+      <LinearLayout
+          android:id="@+id/buttons_reinickendorf"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:textSize="@dimen/text_size_20"
-          android:textColor="@color/colorAccent"
-          android:text="@string/turkish"/>
+          android:orientation="horizontal"
+          android:layout_marginTop="@dimen/margin_16">
+
+        <Button
+            android:id="@+id/button_german_reinickendorf"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_20"
+            android:textColor="@color/colorAccent"
+            android:text="@string/german"/>
+
+        <Button
+            android:id="@+id/button_turkish_reinickendorf"
+            android:gravity="center"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_20"
+            android:textColor="@color/colorAccent"
+            android:text="@string/turkish"/>
+
+      </LinearLayout>
 
     </LinearLayout>
 

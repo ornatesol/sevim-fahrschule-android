@@ -5,42 +5,73 @@ import java.util.List;
 
 public class TheorieImageItemSource {
 
-    private static List<String> germanPlanList;
+    private List<String> deWeddingGalleryPagesList;
 
-    private static List<String> turkishPlanList;
+    private List<String> trWeddingGalleryPagesList;
 
-    public static List<String> getGermanPlanList() {
-        fillGermanPlanList();
-        return germanPlanList;
+    private List<String> deReinickendorfGalleryPagesList;
+
+    private List<String> trReinickendorfGalleryPagesList;
+
+    private String weddingPlanImageUrl;
+
+    private String reinickendorfPlanImageUrl;
+
+    private String selectedLanguage = "de"; //using german as default
+
+    public TheorieImageItemSource() {
+        fillWeddingData();
+        fillReinickendorfData();
     }
 
-    public static List<String> getTurkishPlanList() {
-        fillTurkishPlanList();
-        return turkishPlanList;
+    public TheorieImageItemSource(String selectedLanguage) {
+        this();
+        this.selectedLanguage = selectedLanguage;
     }
 
-    //TODO should be filled later from url
-    private static void fillGermanPlanList() {
-        germanPlanList = new ArrayList<>();
-        germanPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/de/1_Deutsch_Di_Do_Sa.png");
-        germanPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/de/2_Deutsch_Nachmittag_Page_1.png");
-        germanPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/de/3_Deutsch_Nachmittag_Page_2.png");
-        germanPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/de/4_Scharni%20Vormittag%20Deutsch.png");
+    private void fillWeddingData() {
+        weddingPlanImageUrl = "http://fahrschule-sevim.ornatesol.com/theory/Wedding.png";
+
+        deWeddingGalleryPagesList = new ArrayList<>();
+        deWeddingGalleryPagesList.add("http://fahrschule-sevim.ornatesol.com/theory/de/wedding/1_de_Di_Do_Sa.png");
+        deWeddingGalleryPagesList.add("http://fahrschule-sevim.ornatesol.com/theory/de/wedding/2_de_vormittags_abends.png");
+
+        trWeddingGalleryPagesList = new ArrayList<>();
+        trWeddingGalleryPagesList.add("http://fahrschule-sevim.ornatesol.com/theory/tr/wedding/1_tr_en_vormittags_abends.png");
     }
 
-    private static void fillTurkishPlanList() {
-        turkishPlanList = new ArrayList<>();
-        turkishPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/tr/1_DI%20DO%20T%C3%9CRKCE%20YEP%20YENI.png");
-        turkishPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/tr/2_Scharni%20T%C3%BCrkisch_Page_1.png");
-        turkishPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/tr/3_Scharni%20T%C3%BCrkisch_Page_2.png");
+    private void fillReinickendorfData() {
+        reinickendorfPlanImageUrl = "http://fahrschule-sevim.ornatesol.com/theory/Reinickendorf.png";
+
+        deReinickendorfGalleryPagesList = new ArrayList<>();
+        deReinickendorfGalleryPagesList.add("http://fahrschule-sevim.ornatesol.com/theory/de/reinickendorf/1_abend.png");
+        deReinickendorfGalleryPagesList.add("http://fahrschule-sevim.ornatesol.com/theory/de/reinickendorf/2_vormittag.png");
+
+        trReinickendorfGalleryPagesList = new ArrayList<>();
+        trReinickendorfGalleryPagesList.add("http://fahrschule-sevim.ornatesol.com/theory/tr/reinickendorf/1_tr_en_di_do.png");
     }
 
-    public static String getPlanForWedding() {
-        return "http://fahrschule-sevim.ornatesol.com/theory/theory_1.png";
+    public List<String> getDeWeddingGalleryPagesList() {
+        return deWeddingGalleryPagesList;
     }
 
-    public static String getPlanForReinickendorf() {
-        return "http://fahrschule-sevim.ornatesol.com/theory/theory_1.png";
+    public List<String> getTrWeddingGalleryPagesList() {
+        return trWeddingGalleryPagesList;
     }
 
+    public List<String> getDeReinickendorfGalleryPagesList() {
+        return deReinickendorfGalleryPagesList;
+    }
+
+    public List<String> getTrReinickendorfGalleryPagesList() {
+        return trReinickendorfGalleryPagesList;
+    }
+
+    public String getWeddingPlanImageUrl() {
+        return weddingPlanImageUrl;
+    }
+
+    public String getReinickendorfPlanImageUrl() {
+        return reinickendorfPlanImageUrl;
+    }
 }
