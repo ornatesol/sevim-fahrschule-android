@@ -5,68 +5,73 @@ import java.util.List;
 
 public class TheorieImageItemSource {
 
-    private static String mainPlan;
+    private List<String> deWeddingGalleryPagesList;
 
-    private static List<String> germanPlanList;
+    private List<String> trWeddingGalleryPagesList;
 
-    private static List<String> englishPlanList;
+    private List<String> deReinickendorfGalleryPagesList;
 
-    private static List<String> turkishPlanList;
+    private List<String> trReinickendorfGalleryPagesList;
 
-    public static void setGermanPlanList(List<String> germanPlanList) {
-        TheorieImageItemSource.germanPlanList = germanPlanList;
+    private String weddingPlanImageUrl;
+
+    private String reinickendorfPlanImageUrl;
+
+    private String selectedLanguage = "de"; //using german as default
+
+    public TheorieImageItemSource() {
+        fillWeddingData();
+        fillReinickendorfData();
     }
 
-    public static void setEnglishPlanList(List<String> englishPlanList) {
-        TheorieImageItemSource.englishPlanList = englishPlanList;
+    public TheorieImageItemSource(String selectedLanguage) {
+        this();
+        this.selectedLanguage = selectedLanguage;
     }
 
-    public static void setTurkishPlanList(List<String> turkishPlanList) {
-        TheorieImageItemSource.turkishPlanList = turkishPlanList;
+    private void fillWeddingData() {
+        weddingPlanImageUrl = "http://fahrschule-sevim.ornatesol.com/theory/Wedding.png";
+
+        deWeddingGalleryPagesList = new ArrayList<>();
+        deWeddingGalleryPagesList.add("http://fahrschule-sevim.ornatesol.com/theory/de/wedding/1_de_Di_Do_Sa.png");
+        deWeddingGalleryPagesList.add("http://fahrschule-sevim.ornatesol.com/theory/de/wedding/2_de_vormittags_abends.png");
+
+        trWeddingGalleryPagesList = new ArrayList<>();
+        trWeddingGalleryPagesList.add("http://fahrschule-sevim.ornatesol.com/theory/tr/wedding/1_tr_en_vormittags_abends.png");
     }
 
-    public static List<String> getGermanPlanList() {
-        fillGermanPlanList();
-        return germanPlanList;
+    private void fillReinickendorfData() {
+        reinickendorfPlanImageUrl = "http://fahrschule-sevim.ornatesol.com/theory/Reinickendorf.png";
+
+        deReinickendorfGalleryPagesList = new ArrayList<>();
+        deReinickendorfGalleryPagesList.add("http://fahrschule-sevim.ornatesol.com/theory/de/reinickendorf/1_abend.png");
+        deReinickendorfGalleryPagesList.add("http://fahrschule-sevim.ornatesol.com/theory/de/reinickendorf/2_vormittag.png");
+
+        trReinickendorfGalleryPagesList = new ArrayList<>();
+        trReinickendorfGalleryPagesList.add("http://fahrschule-sevim.ornatesol.com/theory/tr/reinickendorf/1_tr_en_di_do.png");
     }
 
-    public static List<String> getEnglishPlanList() {
-        fillEnglishPlanList();
-        return englishPlanList;
+    public List<String> getDeWeddingGalleryPagesList() {
+        return deWeddingGalleryPagesList;
     }
 
-    public static List<String> getTurkishPlanList() {
-        fillTurkishPlanList();
-        return turkishPlanList;
+    public List<String> getTrWeddingGalleryPagesList() {
+        return trWeddingGalleryPagesList;
     }
 
-    //TODO should be filled later from url
-    private static void fillGermanPlanList() {
-        germanPlanList = new ArrayList<>();
-        germanPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/de/1_Deutsch_Di_Do_Sa.png");
-        germanPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/de/2_Deutsch_Nachmittag_Page_1.png");
-        germanPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/de/3_Deutsch_Nachmittag_Page_2.png");
-        germanPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/de/4_Scharni%20Vormittag%20Deutsch.png");
+    public List<String> getDeReinickendorfGalleryPagesList() {
+        return deReinickendorfGalleryPagesList;
     }
 
-    private static void fillEnglishPlanList() {
-        englishPlanList = new ArrayList<>();
-        englishPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/en/1_ENGLISCH_YEP_YENI.png");
+    public List<String> getTrReinickendorfGalleryPagesList() {
+        return trReinickendorfGalleryPagesList;
     }
 
-    private static void fillTurkishPlanList() {
-        turkishPlanList = new ArrayList<>();
-        turkishPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/tr/1_DI%20DO%20T%C3%9CRKCE%20YEP%20YENI.png");
-        turkishPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/tr/2_Scharni%20T%C3%BCrkisch_Page_1.png");
-        turkishPlanList.add("http://fahrschule-sevim.ornatesol.com/theory/tr/3_Scharni%20T%C3%BCrkisch_Page_2.png");
+    public String getWeddingPlanImageUrl() {
+        return weddingPlanImageUrl;
     }
 
-    public static String getMainPlan() {
-        mainPlan = "http://fahrschule-sevim.ornatesol.com/theory/theory_1.png";
-        return mainPlan;
-    }
-
-    public static void setMainPlan(String mainPlan) {
-        TheorieImageItemSource.mainPlan = mainPlan;
+    public String getReinickendorfPlanImageUrl() {
+        return reinickendorfPlanImageUrl;
     }
 }

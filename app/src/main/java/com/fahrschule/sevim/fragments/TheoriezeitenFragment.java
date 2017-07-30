@@ -6,9 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import butterknife.BindView;
-import butterknife.OnClick;
+
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.models.TheorieImageItemSource;
 import com.fahrschule.sevim.utils.Utils;
@@ -16,10 +14,13 @@ import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
+import butterknife.BindView;
+import butterknife.OnClick;
+
 public class TheoriezeitenFragment extends BaseFragment {
 
     enum SUPPORTED_LANGUAGES {
-        DE, EN, TR; //TODO make it dynamic based on urls in text file
+        DE, TR;
 
         static SUPPORTED_LANGUAGES from(String name) {
             for(SUPPORTED_LANGUAGES item: values()) {
@@ -31,12 +32,30 @@ public class TheoriezeitenFragment extends BaseFragment {
         }
     }
 
-    @BindView(R.id.main_plan)
-    PhotoView mainTheoriePlan;
+    enum SUPPORTED_LOCATIONS {
+        WEDDING, REINICKENDORF;
+
+        static SUPPORTED_LOCATIONS from(String name) {
+            for(SUPPORTED_LOCATIONS item: values()) {
+                if (item.name().equalsIgnoreCase(name)) {
+                    return item;
+                }
+            }
+            return WEDDING; //default as fallback plan
+        }
+    }
 
     public static TheoriezeitenFragment newInstance() {
         return new TheoriezeitenFragment();
     }
+
+    @BindView(R.id.imageview_wedding)
+    PhotoView weddingTheoryPlanImage;
+
+    @BindView(R.id.imageview_reinickendorf)
+    PhotoView reinickendorfTheoryPlanImage;
+
+    private TheorieImageItemSource theorieImageItemSource;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,12 +66,13 @@ public class TheoriezeitenFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        theorieImageItemSource = new TheorieImageItemSource();
         if(Utils.isOnline(getActivity())) {
-            loadMainPlanImageFromNetwork();
+            loadTheoryPlanImageFromNetwork();
         } else {
             Utils.showConnectionErrorDialog(getActivity(),
                     getString(R.string.error_no_connection_data_is_old));
-            loadMainPlanImageFromCache();
+            loadTheoryPlanImageFromCache();
         }
     }
 
@@ -64,44 +84,60 @@ public class TheoriezeitenFragment extends BaseFragment {
             // This ensures that the anonymous callback we have does not prevent the activity from
             // being garbage collected. It also prevents our callback from getting invoked even after the
             // activity has finished.
-            Picasso.with(getActivity()).cancelRequest(mainTheoriePlan);
+            Picasso.with(getActivity()).cancelRequest(weddingTheoryPlanImage);
         }
     }
 
-    private void loadMainPlanImageFromNetwork() {
+    private void loadTheoryPlanImageFromNetwork() {
         Picasso.with(getActivity())
-                .load(TheorieImageItemSource.getMainPlan())
+                .load(theorieImageItemSource.getWeddingPlanImageUrl())
                 .error(R.string.error_generic)
-                .noFade()
-                .networkPolicy(NetworkPolicy.NO_CACHE)
-                .into(mainTheoriePlan);
-    }
+                .into(weddingTheoryPlanImage);
 
-    private void loadMainPlanImageFromCache() {
         Picasso.with(getActivity())
-                .load(TheorieImageItemSource.getMainPlan())
-                .noFade()
+                .load(theorieImageItemSource.getReinickendorfPlanImageUrl())
                 .error(R.string.error_generic)
-                .into(mainTheoriePlan);
+                .into(reinickendorfTheoryPlanImage);
     }
 
-    @OnClick(R.id.show_german_plan)
-    protected void showGermanPlan() {
-        launchTheoriPlanPerLanguage(SUPPORTED_LANGUAGES.DE.name());
+    private void loadTheoryPlanImageFromCache() {
+        Picasso.with(getActivity())
+                .load(theorieImageItemSource.getWeddingPlanImageUrl())
+                .noFade()
+                .networkPolicy(NetworkPolicy.OFFLINE)
+                .error(R.string.error_generic)
+                .into(weddingTheoryPlanImage);
+
+        Picasso.with(getActivity())
+                .load(theorieImageItemSource.getReinickendorfPlanImageUrl())
+                .noFade()
+                .networkPolicy(NetworkPolicy.OFFLINE)
+                .error(R.string.error_generic)
+                .into(reinickendorfTheoryPlanImage);
     }
 
-    @OnClick(R.id.show_english_plan)
-    protected void showEnglishPlan() {
-        launchTheoriPlanPerLanguage(SUPPORTED_LANGUAGES.EN.name());
+    @OnClick(R.id.button_german_wedding)
+    protected void showGermanPlanForWedding() {
+        launchTheoriPlan(SUPPORTED_LOCATIONS.WEDDING.name(), SUPPORTED_LANGUAGES.DE.name());
     }
 
-    @OnClick(R.id.show_turkish_plan)
-    protected void showTurkishPlan() {
-        launchTheoriPlanPerLanguage(SUPPORTED_LANGUAGES.TR.name());
+    @OnClick(R.id.button_turkish_wedding)
+    protected void showTurkishPlanForWedding() {
+        launchTheoriPlan(SUPPORTED_LOCATIONS.WEDDING.name(), SUPPORTED_LANGUAGES.TR.name());
     }
 
-    private void launchTheoriPlanPerLanguage(String language) {
-        Fragment fragment = TheorieLocalizedGalleryFragment.newInstance(language);
+    @OnClick(R.id.button_german_reinickendorf)
+    protected void showGermanPlanForReinickendorf() {
+        launchTheoriPlan(SUPPORTED_LOCATIONS.REINICKENDORF.name(), SUPPORTED_LANGUAGES.DE.name());
+    }
+
+    @OnClick(R.id.button_turkish_reinickendorf)
+    protected void showTurkishPlanForReinickendorf() {
+        launchTheoriPlan(SUPPORTED_LOCATIONS.REINICKENDORF.name(), SUPPORTED_LANGUAGES.TR.name());
+    }
+
+    private void launchTheoriPlan(String location, String language) {
+        Fragment fragment = TheorieLocalizedGalleryFragment.newInstance(location, language);
         getFragmentManager().beginTransaction()
                 .replace(R.id.content, fragment)
                 .addToBackStack(null)
