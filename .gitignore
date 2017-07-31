@@ -1,25 +1,18 @@
 keystore.properties
 *.keystore
 gradle.properties
+*.jks
 
 #Android generated
 bin
 gen
-*.ap_
 .apt_generated/
-
-#Eclipse
-.project
-.classpath
-.settings
-.checkstyle
 
 #IntelliJ IDEA
 .idea
 *.iml
 *.ipr
 *.iws
-classes
 gen-external-apklibs
 
 #Maven
@@ -45,3 +38,4 @@ tmp
 *.bak
 *.launch
 captures
+*.apk
