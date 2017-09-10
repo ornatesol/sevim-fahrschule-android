@@ -25,8 +25,13 @@ android {
   }
   buildTypes {
     release {
-      minifyEnabled false
+      minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      debuggable false
+    }
+    debug {
+      debuggable true
+      minifyEnabled false
     }
   }
 }
@@ -43,26 +48,25 @@ dependencies {
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
-  androidTestCompile "com.google.dagger:dagger:2.7"
-
+  androidTestCompile 'com.google.dagger:dagger:2.7'
   // Dependencies for local unit tests
   testCompile 'junit:junit:4.12'
 
   // Dependencies for Android unit tests
-  androidTestCompile "junit:junit:3.12"
+  androidTestCompile 'junit:junit:3.12'
 
   //UI
-  compile "com.jakewharton:butterknife:8.5.1"
+  compile 'com.jakewharton:butterknife:8.5.1'
   apt "com.jakewharton:butterknife-compiler:8.5.1"
 
 
   //Dependency Injection
-  compile "com.google.dagger:dagger:2.7"
+  compile 'com.google.dagger:dagger:2.7'
   apt "com.google.dagger:dagger-compiler:2.7"
 
   //Rx
-  compile "io.reactivex:rxjava:1.2.1"
-  compile "io.reactivex:rxandroid:1.2.1"
+  compile 'io.reactivex:rxjava:1.2.1'
+  compile 'io.reactivex:rxandroid:1.2.1'
 
   //Loading Images
   compile 'com.squareup.picasso:picasso:2.5.2'
