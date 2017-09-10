@@ -12,12 +12,27 @@ buildscript {
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
   signingConfigs {
     debug {
       storeFile file("debug.keystore")
     }
     release {
+      try {
+        keyAlias keystoreProperties['keyAlias']
+        keyPassword keystoreProperties['keyPassword']
+        storeFile file(keystoreProperties['storeFile'])
+        storePassword keystoreProperties['storePassword']
+      }
+      catch (ex) {
+        throw new InvalidUserDataException("You should define required fields in keystore.properties.")
+      }
     }
   }
   compileSdkVersion 25
@@ -36,7 +51,6 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
       debuggable false
       signingConfig signingConfigs.release
-
     }
     debug {
       debuggable true
