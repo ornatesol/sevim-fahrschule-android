@@ -13,8 +13,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 
 android {
+  signingConfigs {
+    debug {
+      storeFile file("debug.keystore")
+    }
+    release {
+    }
+  }
   compileSdkVersion 25
-  buildToolsVersion "25.0.2"
+  buildToolsVersion "25.0.3"
   defaultConfig {
     applicationId "com.fahrschule.sevim"
     minSdkVersion 19
@@ -28,22 +35,24 @@ android {
       minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
       debuggable false
+      signingConfig signingConfigs.release
+
     }
     debug {
       debuggable true
       minifyEnabled false
+      signingConfig signingConfigs.debug
+      applicationIdSuffix ".debug"
     }
   }
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-
+  compile fileTree(include: ['*.jar'], dir: 'libs')
   // App's support dependencies
   compile 'com.android.support:appcompat-v7:25.3.1'
   compile 'com.android.support:support-v4:25.3.1'
   compile 'com.android.support:design:25.3.1'
-
   // Dependencies for Android UI Tests
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
@@ -51,27 +60,20 @@ dependencies {
   androidTestCompile 'com.google.dagger:dagger:2.7'
   // Dependencies for local unit tests
   testCompile 'junit:junit:4.12'
-
   // Dependencies for Android unit tests
   androidTestCompile 'junit:junit:3.12'
-
   //UI
   compile 'com.jakewharton:butterknife:8.5.1'
   apt "com.jakewharton:butterknife-compiler:8.5.1"
-
-
   //Dependency Injection
   compile 'com.google.dagger:dagger:2.7'
   apt "com.google.dagger:dagger-compiler:2.7"
-
   //Rx
   compile 'io.reactivex:rxjava:1.2.1'
   compile 'io.reactivex:rxandroid:1.2.1'
-
   //Loading Images
   compile 'com.squareup.picasso:picasso:2.5.2'
   compile 'com.github.chrisbanes:PhotoView:2.0.0'
-
   //Networking
   compile 'com.squareup.retrofit2:retrofit:2.0.2'
   compile 'com.squareup.retrofit2:converter-gson:2.0.2'
