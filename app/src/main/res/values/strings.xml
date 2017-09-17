@@ -4,6 +4,8 @@
   <string name="navigation_drawer_open">Open navigation drawer</string>
   <string name="navigation_drawer_close">Close navigation drawer</string>
 
+  <string name="company_branding">Ornate Solutions GmbH</string>
+
   <!-- Nav Bar Menu Items -->
   <string name="learning_site">Lernseite</string>
   <string name="messages">Nachrichten</string>

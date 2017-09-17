@@ -12,12 +12,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+
+import com.fahrschule.sevim.R;
+
+import org.json.JSONArray;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.fahrschule.sevim.R;
-import org.json.JSONArray;
 
 public abstract class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -30,6 +36,9 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @BindView(R.id.nav_view)
     protected NavigationView navigationView;
+
+    @BindView(R.id.company_branding)
+    protected TextView companyBranding;
 
     private NavItemActionTargetListener listener;
 
@@ -73,6 +82,12 @@ public abstract class BaseActivity extends AppCompatActivity
 
     private void setupNavigationView() {
         navigationView.setNavigationItemSelectedListener(this);
+
+        companyBranding.setClickable(true);
+        companyBranding.setMovementMethod(LinkMovementMethod.getInstance());
+        String companyWebsiteUrl = "<a href='%s'>%s</a>";
+        companyBranding.setText(Html.fromHtml(String.format(companyWebsiteUrl,
+                getString(R.string.ornate_solutions_url), getString(R.string.company_branding))));
     }
 
     private void setupDrawer() {
