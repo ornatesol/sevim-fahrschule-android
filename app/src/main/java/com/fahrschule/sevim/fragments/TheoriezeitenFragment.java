@@ -1,5 +1,6 @@
 package com.fahrschule.sevim.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,13 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.fahrschule.sevim.R;
+import com.fahrschule.sevim.activities.CalendarActivity;
 import com.fahrschule.sevim.models.TheorieImageItemSource;
 import com.fahrschule.sevim.utils.Utils;
-import com.github.chrisbanes.photoview.PhotoView;
-import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 public class TheoriezeitenFragment extends BaseFragment {
@@ -23,7 +21,7 @@ public class TheoriezeitenFragment extends BaseFragment {
         DE, TR;
 
         static SUPPORTED_LANGUAGES from(String name) {
-            for(SUPPORTED_LANGUAGES item: values()) {
+            for (SUPPORTED_LANGUAGES item : values()) {
                 if (item.name().equalsIgnoreCase(name)) {
                     return item;
                 }
@@ -36,7 +34,7 @@ public class TheoriezeitenFragment extends BaseFragment {
         WEDDING, REINICKENDORF;
 
         static SUPPORTED_LOCATIONS from(String name) {
-            for(SUPPORTED_LOCATIONS item: values()) {
+            for (SUPPORTED_LOCATIONS item : values()) {
                 if (item.name().equalsIgnoreCase(name)) {
                     return item;
                 }
@@ -49,13 +47,6 @@ public class TheoriezeitenFragment extends BaseFragment {
         return new TheoriezeitenFragment();
     }
 
-    @BindView(R.id.imageview_wedding)
-    PhotoView weddingTheoryPlanImage;
-
-    @BindView(R.id.imageview_reinickendorf)
-    PhotoView reinickendorfTheoryPlanImage;
-
-    private TheorieImageItemSource theorieImageItemSource;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,81 +57,31 @@ public class TheoriezeitenFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        theorieImageItemSource = new TheorieImageItemSource();
-        if(Utils.isOnline(getActivity())) {
-            loadTheoryPlanImageFromNetwork();
-        } else {
-            Utils.showConnectionErrorDialog(getActivity(),
-                    getString(R.string.error_no_connection_data_is_old));
-            loadTheoryPlanImageFromCache();
-        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (isDetached()) {
-            // Always cancel the request here, this is safe to call even if the image has been loaded.
-            // This ensures that the anonymous callback we have does not prevent the activity from
-            // being garbage collected. It also prevents our callback from getting invoked even after the
-            // activity has finished.
-            Picasso.with(getActivity()).cancelRequest(weddingTheoryPlanImage);
-        }
     }
 
-    private void loadTheoryPlanImageFromNetwork() {
-        Picasso.with(getActivity())
-                .load(theorieImageItemSource.getWeddingPlanImageUrl())
-                .error(R.string.error_generic)
-                .into(weddingTheoryPlanImage);
 
-        Picasso.with(getActivity())
-                .load(theorieImageItemSource.getReinickendorfPlanImageUrl())
-                .error(R.string.error_generic)
-                .into(reinickendorfTheoryPlanImage);
+    @OnClick({R.id.ll_1, R.id.ll_2, R.id.ll_3, R.id.ll_4, R.id.ll_5, R.id.ll_6, R.id.ll_7,
+            R.id.ll_8, R.id.ll_9, R.id.ll_10, R.id.ll_11, R.id.ll_12, R.id.ll_13, R.id.ll_14})
+    public void onCalenderItemWeddingClicked(View view) {
+        if (view.getTag().toString().contains(getString(R.string.english))) return;
+        lanuchCalenderActivity(view.getTag().toString(), true);
     }
 
-    private void loadTheoryPlanImageFromCache() {
-        Picasso.with(getActivity())
-                .load(theorieImageItemSource.getWeddingPlanImageUrl())
-                .noFade()
-                .networkPolicy(NetworkPolicy.OFFLINE)
-                .error(R.string.error_generic)
-                .into(weddingTheoryPlanImage);
-
-        Picasso.with(getActivity())
-                .load(theorieImageItemSource.getReinickendorfPlanImageUrl())
-                .noFade()
-                .networkPolicy(NetworkPolicy.OFFLINE)
-                .error(R.string.error_generic)
-                .into(reinickendorfTheoryPlanImage);
+    @OnClick({R.id.ll_15, R.id.ll_16, R.id.ll_17, R.id.ll_18, R.id.ll_19, R.id.ll_20, R.id.ll_21,
+            R.id.ll_22, R.id.ll_23, R.id.ll_24})
+    public void onCalenderItemReinClicked(View view) {
+        lanuchCalenderActivity(view.getTag().toString(), false);
     }
 
-    @OnClick(R.id.button_german_wedding)
-    protected void showGermanPlanForWedding() {
-        launchTheoriPlan(SUPPORTED_LOCATIONS.WEDDING.name(), SUPPORTED_LANGUAGES.DE.name());
-    }
-
-    @OnClick(R.id.button_turkish_wedding)
-    protected void showTurkishPlanForWedding() {
-        launchTheoriPlan(SUPPORTED_LOCATIONS.WEDDING.name(), SUPPORTED_LANGUAGES.TR.name());
-    }
-
-    @OnClick(R.id.button_german_reinickendorf)
-    protected void showGermanPlanForReinickendorf() {
-        launchTheoriPlan(SUPPORTED_LOCATIONS.REINICKENDORF.name(), SUPPORTED_LANGUAGES.DE.name());
-    }
-
-    @OnClick(R.id.button_turkish_reinickendorf)
-    protected void showTurkishPlanForReinickendorf() {
-        launchTheoriPlan(SUPPORTED_LOCATIONS.REINICKENDORF.name(), SUPPORTED_LANGUAGES.TR.name());
-    }
-
-    private void launchTheoriPlan(String location, String language) {
-        Fragment fragment = TheorieLocalizedGalleryFragment.newInstance(location, language);
-        getFragmentManager().beginTransaction()
-                .replace(R.id.content, fragment)
-                .addToBackStack(null)
-                .commit();
+    private void lanuchCalenderActivity(String type, boolean isWedding) {
+        Intent intent = new Intent(getActivity(), CalendarActivity.class);
+        intent.putExtra(CalendarActivity.CALENDAR_TYPE, type);
+        intent.putExtra(CalendarActivity.IS_WEDDING, isWedding);
+        startActivity(intent);
     }
 }

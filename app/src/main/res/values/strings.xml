@@ -1,107 +1,113 @@
 <resources>
-  <string name="app_name">Sevim Fahrschule</string>
+    <string name="app_name">Sevim Fahrschule</string>
 
-  <string name="navigation_drawer_open">Open navigation drawer</string>
-  <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
-  <string name="company_branding">Ornate Solutions GmbH</string>
+    <string name="company_branding">Ornate Solutions GmbH</string>
 
-  <!-- Nav Bar Menu Items -->
-  <string name="learning_site">Lernseite</string>
-  <string name="messages">Nachrichten</string>
-  <string name="infos">Infos</string>
-  <string name="services">Leistungen</string>
-  <string name="locations">Standorte</string>
-  <string name="office_timing">Bürozeiten</string>
-  <string name="theory_calendar">Theorieunterricht</string>
-  <string name="contact">Kontakt</string>
+    <!-- Nav Bar Menu Items -->
+    <string name="learning_site">Lernseite</string>
+    <string name="messages">Nachrichten</string>
+    <string name="infos">Infos</string>
+    <string name="services">Leistungen</string>
+    <string name="locations">Standorte</string>
+    <string name="office_timing">Bürozeiten</string>
+    <string name="theory_calendar">Theorieunterricht</string>
+    <string name="contact">Kontakt</string>
 
-  <!-- Error Messages -->
-  <string name="browser_app_not_found">Es konnte keine Browser-App gefunden werden.</string>
-  <string name="error_no_connection">Keine Internetverbindung</string>
-  <string name="connection_error_dialog_title">Verbindungsfehler</string>
-  <string name="error_generic">Sorry, da ist etwas schief gelaufen!</string>
-  <string name="error_no_connection_data_is_old">Keine Internetverbindung. Daten könnten alt sein.</string>
+    <!-- Error Messages -->
+    <string name="browser_app_not_found">Es konnte keine Browser-App gefunden werden.</string>
+    <string name="error_no_connection">Keine Internetverbindung</string>
+    <string name="connection_error_dialog_title">Verbindungsfehler</string>
+    <string name="error_generic">Sorry, da ist etwas schief gelaufen!</string>
+    <string name="error_no_connection_data_is_old">Keine Internetverbindung. Daten könnten alt sein.</string>
 
-  <!-- Generic App Specific Text -->
-  <string name="ok">Ok</string>
-  <string name="loading">Laden...</string>
+    <!-- Generic App Specific Text -->
+    <string name="ok">Ok</string>
+    <string name="loading">Laden...</string>
 
-  <!-- BuroOffnung zeiten -->
-  <string name="weekday_timings_label">Montag &#8211; Freitag</string>
-  <string name="weekday_timings_value">von 9:00 &#8211; 19:00 Uhr</string>
-  <string name="weekend_timings_label">Samstag</string>
-  <string name="weekend_timings_value">von 10:00 &#8211; 15:00 Uhr</string>
+    <!-- BuroOffnung zeiten -->
+    <string name="weekday_timings_label">Montag &#8211; Freitag</string>
+    <string name="weekday_timings_value">von 9:00 &#8211; 19:00 Uhr</string>
+    <string name="weekend_timings_label">Samstag</string>
+    <string name="weekend_timings_value">von 10:00 &#8211; 15:00 Uhr</string>
 
-  <!-- Learnseite -->
-  <string name="lernseite_dialog_title">Wähle ein Ziel</string>
-  <string name="cancel">Abbrechen</string>
-  <string name="option_lernseite_website">Lernseite</string>
-  <string name="option_lernseite_play">FS Theorie mobile app</string>
+    <!-- Learnseite -->
+    <string name="lernseite_dialog_title">Wähle ein Ziel</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="option_lernseite_website">Lernseite</string>
+    <string name="option_lernseite_play">FS Theorie mobile app</string>
 
-  <!-- Info List Items -->
-  <string name="schaltung">Automatik &amp; Schaltung</string>
-  <string name="fahrlehrer">Fahrlehrer/innen</string>
-  <string name="ausl_fuehrerschein">Umschreibung ausl. Führerscheine</string>
-  <string name="fuehrerschein_17">Führerschein mit 17 J. (BF 17)</string>
-  <string name="intensive_ausbildung">Intensive Ausbildung</string>
-  <string name="theorieunterricht">10x Theorieunterricht in der Woche</string>
-  <string name="moderne_fahrzeuge">Moderne Fahrzeuge</string>
-  <string name="lkw">PKW / LKW / Motorrad</string>
-  <string name="asf">ASF Seminar</string>
-  <string name="auffrischung">Auffrischungsfahrstunden</string>
-  <string name="angsthasen">Angsthasenprogramm</string>
-  <string name="spritspar">Spritsparkurs</string>
-  <string name="erste_hilfe">Erste-Hilfe-Kurs im Haus</string>
-  <string name="seetest">Sehtest</string>
-  <string name="theorievorbereitung">Theorievorbereitung</string>
-  <string name="klima_raeume">Klimatisierte Räume</string>
-  <string name="deutsch_tuerkisch">Deutsch, Türkisch, Englisch</string>
-  <string name="lange_buerozeiten">Lange Bürozeiten</string>
-  <string name="beratung">Individuelle Beratung / Planung</string>
-  <string name="express_fuehrerschein">Express Führerschein</string>
-  <string name="antraege">Bürgeramt Anträge über die Fahrschule </string>
+    <!-- Info List Items -->
+    <string name="schaltung">Automatik &amp; Schaltung</string>
+    <string name="fahrlehrer">Fahrlehrer/innen</string>
+    <string name="ausl_fuehrerschein">Umschreibung ausl. Führerscheine</string>
+    <string name="fuehrerschein_17">Führerschein mit 17 J. (BF 17)</string>
+    <string name="intensive_ausbildung">Intensive Ausbildung</string>
+    <string name="theorieunterricht">10x Theorieunterricht in der Woche</string>
+    <string name="moderne_fahrzeuge">Moderne Fahrzeuge</string>
+    <string name="lkw">PKW / LKW / Motorrad</string>
+    <string name="asf">ASF Seminar</string>
+    <string name="auffrischung">Auffrischungsfahrstunden</string>
+    <string name="angsthasen">Angsthasenprogramm</string>
+    <string name="spritspar">Spritsparkurs</string>
+    <string name="erste_hilfe">Erste-Hilfe-Kurs im Haus</string>
+    <string name="seetest">Sehtest</string>
+    <string name="theorievorbereitung">Theorievorbereitung</string>
+    <string name="klima_raeume">Klimatisierte Räume</string>
+    <string name="deutsch_tuerkisch">Deutsch, Türkisch, Englisch</string>
+    <string name="lange_buerozeiten">Lange Bürozeiten</string>
+    <string name="beratung">Individuelle Beratung / Planung</string>
+    <string name="express_fuehrerschein">Express Führerschein</string>
+    <string name="antraege">Bürgeramt Anträge über die Fahrschule </string>
 
-  <!-- Standorte -->
-  <!-- Wedding -->
-  <string name="wedding_title">WEDDING</string>
-  <string name="wedding_address">U-Bhf. Osloer Str. \nSchwedenstraße 18, 13357 Berlin</string>
-  <string name="wedding_phone_1">Tel.: 030 &#8211; 755 69 585</string>
-  <string name="wedding_phone_2">Tel.: 030 &#8211; 755 69 587</string>
-  <string name="wedding_fax">Fax: 030 &#8211; 755 69 586</string>
-  <string name="wedding_mobile">Mobil: 0178 &#8211; 149 39 98</string>
-  <string name="wedding_email">Email: info@fahrschule-sevim.de</string>
+    <!-- Standorte -->
+    <!-- Wedding -->
+    <string name="wedding_title">WEDDING</string>
+    <string name="wedding_address">U-Bhf. Osloer Str. \nSchwedenstraße 18, 13357 Berlin</string>
+    <string name="wedding_phone_1">Tel.: 030 &#8211; 755 69 585</string>
+    <string name="wedding_phone_2">Tel.: 030 &#8211; 755 69 587</string>
+    <string name="wedding_fax">Fax: 030 &#8211; 755 69 586</string>
+    <string name="wedding_mobile">Mobil: 0178 &#8211; 149 39 98</string>
+    <string name="wedding_email">Email: info@fahrschule-sevim.de</string>
 
-  <!-- Reinickendorf -->
-  <string name="reinickendorf_title">REINICKENDORF</string>
-  <string name="reinickendorf_address">U-Bhf. Scharnweberstr. \nScharnweberstraße 60, 13405 Berlin </string>
-  <string name="reinickendorf_phone_1">Tel.: 030 &#8211; 65 77 05 91</string>
-  <string name="reinickendorf_fax">Fax: 030 &#8211; 65 77 05 95</string>
-  <string name="reinickendorf_mobile">Mobil: 0178 &#8211; 149 55 59</string>
-  <string name="reinickendorf_email">Email: post@fahrschule-sevim.de</string>
+    <!-- Reinickendorf -->
+    <string name="reinickendorf_title">REINICKENDORF</string>
+    <string name="reinickendorf_address">U-Bhf. Scharnweberstr. \nScharnweberstraße 60, 13405 Berlin </string>
+    <string name="reinickendorf_phone_1">Tel.: 030 &#8211; 65 77 05 91</string>
+    <string name="reinickendorf_fax">Fax: 030 &#8211; 65 77 05 95</string>
+    <string name="reinickendorf_mobile">Mobil: 0178 &#8211; 149 55 59</string>
+    <string name="reinickendorf_email">Email: post@fahrschule-sevim.de</string>
 
-  <string name="sending_email_message">Zuschicken E-Mail &#8230;</string>
+    <string name="sending_email_message">Zuschicken E-Mail &#8230;</string>
 
-  <!-- Theoriezeiten -->
-  <string name="german">Deutsch</string>
-  <string name="english">English</string>
-  <string name="turkish">Türkisch</string>
+    <!-- Theoriezeiten -->
+    <string name="german">Deutsch</string>
+    <string name="english">English</string>
+    <string name="turkish">Türkisch</string>
 
-  <!-- Leistung -->
-  <string name="leistung_achtung_title">ACHTUNG!</string>
-  <string name="leistung_achtung_content">
+    <!-- Leistung -->
+    <string name="leistung_achtung_title">ACHTUNG!</string>
+    <string name="leistung_achtung_content">
     Liebe Schüler,\n
     wenn die eingeplanten\n
     Fahrstunden nicht eingehalten\n
     oder 2 Werktage vorher nicht\n
     abgesagt werden, wird 70%\n
   der Fahrstunde angerechnet!</string>
-  <string name="leistung_info_subtitle">INFO!</string>
-  <string name="leistung_info_content">
+    <string name="leistung_info_subtitle">INFO!</string>
+    <string name="leistung_info_content">
     Fahrstunden bitte rechtzeitig,\n
     Mindestens 3 Wochen\n
     vorher planen!
   </string>
+    <string name="dutch">dutch</string>
+    <string name="calender_para">Bitte klicken Sie auf die gewünschte Sprache um einen detaillierten Zeitplan zu sehen</string>
+    <string name="permission_text">To write event your calendar, calendar permmission is required</string>
+    <string name="add_to_calendar">öchten Sie ein Ereignis im Kalender erstellen?</string>
+    <string name="ja">Ja</string>
+    <string name="Stornieren">Stornieren</string>
 
 
 </resources>

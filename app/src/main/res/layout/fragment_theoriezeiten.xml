@@ -1,110 +1,1002 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.fahrschule.sevim.fragments.TheoriezeitenFragment">
+    android:layout_height="match_parent">
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:layout_margin="@dimen/margin_16">
 
     <LinearLayout
-        android:id="@+id/layout_wedding"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
         android:orientation="vertical">
 
-      <com.github.chrisbanes.photoview.PhotoView
-          android:id="@+id/imageview_wedding"
-          android:layout_width="match_parent"
-          android:layout_height="@dimen/theorieunterricht_image_height"
-          tools:src="@drawable/theory_main_image"/>
 
-      <LinearLayout
-          android:id="@+id/buttons_wedding"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:layout_marginTop="@dimen/margin_8">
-
-        <Button
-            android:id="@+id/button_german_wedding"
-            android:layout_weight="0.5"
-            android:layout_width="0dp"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="@dimen/text_size_20"
-            android:drawableEnd="@drawable/finger_focus"
-            android:drawablePadding="@dimen/margin_4"
-            android:textColor="@color/colorAccent"
-            android:text="@string/german"/>
+            android:layout_margin="10dp"
+            android:text="@string/calender_para"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button_turkish_wedding"
-            android:gravity="center"
-            android:layout_weight="0.5"
-            android:layout_width="0dp"
+
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_20"
-            android:drawableEnd="@drawable/finger_focus"
-            android:drawablePadding="@dimen/margin_4"
-            android:textColor="@color/colorAccent"
-            android:text="@string/turkish"/>
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/wedding_title"
+            android:textColor="@color/black"
+            android:textSize="22dp"
+            android:textStyle="bold" />
 
-      </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bg_calender_blue_header"
+            android:divider="?android:dividerHorizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:weightSum="6">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="MONTAG"
+                android:textColor="@color/white"
+                android:textSize="9dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="DIENSTAG"
+                android:textColor="@color/white"
+                android:textSize="9dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="MITTWOCH"
+                android:textColor="@color/white"
+                android:textSize="9dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="DONNERSTAG"
+                android:textColor="@color/white"
+                android:textSize="9dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="FREITAG"
+                android:textColor="@color/white"
+                android:textSize="9dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="SAMSTAG"
+                android:textColor="@color/white"
+                android:textSize="9dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/white"
+            android:weightSum="6">
+
+            <LinearLayout
+                android:id="@+id/ll_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="10:30 - 12:00"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/cell_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/english">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="English"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="10:30 - 12:00"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="10:30 - 12:00"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/cell_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/english">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="English"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="10:30 - 12:00"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="10:30 - 12:00"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/cell_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="10:30 - 12:00"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/white"
+            android:weightSum="6">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/cell_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="10:30 - 12:00"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/cell_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="15:00 - 16:30"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_9"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/cell_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="15:30 - 17:00"
+                    android:textColor="@color/red_700"
+
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bg_calender_bottom"
+            android:weightSum="6">
+
+            <LinearLayout
+                android:id="@+id/ll_10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="16:00 - 19:30"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_11"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/cell_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/turkish">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/turkish"
+                    android:textColor="@color/color_blue"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="18:00 - 19:30"
+                    android:textColor="@color/color_blue"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="18:00 - 19:30"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_13"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/cell_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/turkish">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/turkish"
+                    android:textColor="@color/color_blue"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="18:00 - 19:30"
+                    android:textColor="@color/color_blue"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="18:00 - 19:30"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/bg_calender_grey"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!--Bottom calender-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/reinickendorf_title"
+            android:textColor="@color/black"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bg_calender_blue_header"
+            android:divider="?android:dividerHorizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:weightSum="6">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="MONTAG"
+                android:textColor="@color/white"
+                android:textSize="9dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="DIENSTAG"
+                android:textColor="@color/white"
+                android:textSize="9dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="MITTWOCH"
+                android:textColor="@color/white"
+                android:textSize="9dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="DONNERSTAG"
+                android:textColor="@color/white"
+                android:textSize="9dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="FREITAG"
+                android:textColor="@color/white"
+                android:textSize="9dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="SAMSTAG"
+                android:textColor="@color/white"
+                android:textSize="9dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/white"
+            android:weightSum="6">
+
+            <LinearLayout
+                android:id="@+id/ll_15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="10:30 - 12:00"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_16"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/cell_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/turkish">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/turkish"
+                    android:textColor="@color/color_blue"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="10:30 - 12:00"
+                    android:textColor="@color/color_blue"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_17"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="10:30 - 12:00"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_18"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/cell_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/turkish">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/turkish"
+                    android:textColor="@color/color_blue"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="10:30 - 12:00"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_19"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="10:30 - 12:00"
+                    android:textColor="@color/red_700"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/cell_color"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bg_calender_bottom"
+            android:weightSum="6">
+
+            <LinearLayout
+                android:id="@+id/ll_20"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="18:00 - 19:30"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_21"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/cell_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="18:00 - 19:30"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_22"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="18:00 - 19:30"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_23"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/cell_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="18:00 - 19:30"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_24"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:tag="@string/dutch">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Deutsch"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="18:00 - 19:30"
+                    android:textColor="@color/red_500"
+                    android:textSize="9dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/bg_calender_grey"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
 
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_reinickendorf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/margin_8">
-
-      <com.github.chrisbanes.photoview.PhotoView
-          android:id="@+id/imageview_reinickendorf"
-          android:layout_width="match_parent"
-          android:layout_height="@dimen/theorieunterricht_image_height"
-          tools:src="@drawable/theory_main_image"/>
-
-      <LinearLayout
-          android:id="@+id/buttons_reinickendorf"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:layout_marginTop="@dimen/margin_8">
-
-        <Button
-            android:id="@+id/button_german_reinickendorf"
-            android:layout_weight="0.5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="@dimen/text_size_20"
-            android:drawableEnd="@drawable/finger_focus"
-            android:drawablePadding="@dimen/margin_4"
-            android:textColor="@color/colorAccent"
-            android:text="@string/german"/>
-
-        <Button
-            android:id="@+id/button_turkish_reinickendorf"
-            android:gravity="center"
-            android:layout_weight="0.5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_20"
-            android:drawableEnd="@drawable/finger_focus"
-            android:drawablePadding="@dimen/margin_4"
-            android:textColor="@color/colorAccent"
-            android:text="@string/turkish"/>
-
-      </LinearLayout>
-
-    </LinearLayout>
-
-  </LinearLayout>
-
 </ScrollView>
