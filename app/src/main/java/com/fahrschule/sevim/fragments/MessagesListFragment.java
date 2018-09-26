@@ -17,6 +17,7 @@ import com.fahrschule.sevim.MainApplication;
 import com.fahrschule.sevim.R;
 import com.fahrschule.sevim.models.MessageItem;
 import com.fahrschule.sevim.network.MessagesApi;
+import com.fahrschule.sevim.network.RetrofitMessagesApi;
 import com.fahrschule.sevim.utils.Utils;
 import java.util.ArrayList;
 import javax.inject.Inject;
@@ -94,7 +95,7 @@ public class MessagesListFragment extends BaseFragment {
 
     private void loadMessages() {
         showProgress(true);
-        loadMessagesSubscription = messagesApi.getAllMessages()
+        loadMessagesSubscription = messagesApi.getAllMessages(RetrofitMessagesApi.API_URL)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Action1<ArrayList<MessageItem>>() {

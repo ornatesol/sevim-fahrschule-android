@@ -6,6 +6,6 @@ import rx.Observable;
 
 public interface MessagesApi {
 
-    Observable<ArrayList<MessageItem>> getAllMessages();
+    Observable<ArrayList<MessageItem>> getAllMessages(String url);
 
 }

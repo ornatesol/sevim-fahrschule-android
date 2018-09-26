@@ -10,4 +10,6 @@
 
   <color name="red_700">#D32F2F</color>
   <color name="red_500">#F44336</color>
+    <color name="cell_color">#c3c3c3</color>
+    <color name="color_blue">#0000FF</color>
 </resources>
