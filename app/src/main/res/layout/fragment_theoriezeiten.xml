@@ -280,7 +280,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="10:30 - 12:00"
+                    android:text="14:00 - 15:30"
                     android:textColor="@color/red_700"
                     android:textSize="9dp" />
             </LinearLayout>
@@ -333,7 +333,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="10:30 - 12:00"
+                    android:text="15:00 - 16:30"
                     android:textColor="@color/red_700"
                     android:textSize="9dp" />
             </LinearLayout>
@@ -454,7 +454,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="16:00 - 19:30"
+                    android:text="18:00 - 19:30"
                     android:textColor="@color/red_700"
                     android:textSize="9dp" />
             </LinearLayout>

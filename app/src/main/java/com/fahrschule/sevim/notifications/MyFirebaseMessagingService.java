@@ -12,6 +12,8 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import static android.content.Context.NOTIFICATION_SERVICE;
+
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static int sequence = 0;
 
