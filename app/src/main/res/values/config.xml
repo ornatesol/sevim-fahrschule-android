@@ -4,7 +4,7 @@
     tools:locale="en">
 
   <string name="learning_site_url">http://www.fahrschule-sevim-lernen.de</string>
-  <string name="learning_app_google_play_url">https://play.google.com/store/apps/details?id=de.wirfahrlehrer.easytheory</string>
+  <string name="learning_app_google_play_url">https://play.google.com/store/apps/details?id=net.clickclickdrive.mobile</string>
   <string name="learning_app_google_play_package">de.wirfahrlehrer.easytheory</string>
   <string name="wedding_gps">52.554734, 13.375859</string>
   <string name="wedding_phone_1_number">030 755 69 585</string>
